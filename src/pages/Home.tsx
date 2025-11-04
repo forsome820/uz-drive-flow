@@ -104,12 +104,12 @@ const Home = () => {
       </section>
 
       {/* Animated Truck Divider */}
-      <div className="relative h-20 bg-secondary overflow-hidden">
+      <div className="relative h-32 bg-secondary overflow-hidden">
         <motion.div
           style={{ x: truckX }}
           className="absolute top-1/2 -translate-y-1/2"
         >
-          <Truck className="w-16 h-16 text-primary" />
+          <Truck className="w-24 h-24 text-primary" />
         </motion.div>
       </div>
 
@@ -118,13 +118,13 @@ const Home = () => {
         {/* Floating Boxes Background */}
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.1 }}
+          whileInView={{ opacity: 0.3 }}
           viewport={{ once: true }}
           className="absolute inset-0 pointer-events-none"
         >
-          <Box className="absolute top-10 left-10 w-12 h-12 text-primary animate-float" />
-          <Package className="absolute top-20 right-20 w-16 h-16 text-primary animate-float" style={{ animationDelay: "1s" }} />
-          <Box className="absolute bottom-10 right-40 w-10 h-10 text-primary animate-float" style={{ animationDelay: "2s" }} />
+          <Box className="absolute top-10 left-10 w-24 h-24 text-primary animate-float" />
+          <Package className="absolute top-20 right-20 w-32 h-32 text-primary animate-float" style={{ animationDelay: "1s" }} />
+          <Box className="absolute bottom-10 right-40 w-20 h-20 text-primary animate-float" style={{ animationDelay: "2s" }} />
         </motion.div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -154,13 +154,13 @@ const Home = () => {
           whileInView={{ pathLength: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 2, ease: "easeInOut" }}
-          className="absolute inset-0 pointer-events-none opacity-5"
+          className="absolute inset-0 pointer-events-none opacity-20"
         >
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <motion.path
               d="M 0,50 Q 25,20 50,50 T 100,50"
               stroke="hsl(var(--primary))"
-              strokeWidth="0.5"
+              strokeWidth="1"
               fill="none"
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
@@ -211,16 +211,16 @@ const Home = () => {
       </section>
 
       {/* Animated Truck Divider 2 */}
-      <div className="relative h-20 bg-background overflow-hidden">
+      <div className="relative h-32 bg-background overflow-hidden">
         <motion.div
           style={{ x: truckX2 }}
           className="absolute top-1/2 -translate-y-1/2"
         >
-          <div className="flex items-center gap-4">
-            <Truck className="w-16 h-16 text-primary" />
-            <div className="flex gap-2">
-              <Box className="w-8 h-8 text-primary opacity-70" />
-              <Box className="w-8 h-8 text-primary opacity-70" />
+          <div className="flex items-center gap-6">
+            <Truck className="w-24 h-24 text-primary" />
+            <div className="flex gap-3">
+              <Box className="w-12 h-12 text-primary opacity-70" />
+              <Box className="w-12 h-12 text-primary opacity-70" />
             </div>
           </div>
         </motion.div>
@@ -231,13 +231,13 @@ const Home = () => {
         {/* Animated Delivery Icons */}
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.08 }}
+          whileInView={{ opacity: 0.25 }}
           viewport={{ once: true }}
           className="absolute inset-0 pointer-events-none"
         >
-          <Route className="absolute top-10 left-1/4 w-20 h-20 text-primary animate-float" />
-          <Truck className="absolute bottom-20 right-1/4 w-24 h-24 text-primary animate-float" style={{ animationDelay: "1.5s" }} />
-          <MapPin className="absolute top-1/3 right-10 w-16 h-16 text-primary animate-float" style={{ animationDelay: "0.5s" }} />
+          <Route className="absolute top-10 left-1/4 w-40 h-40 text-primary animate-float" />
+          <Truck className="absolute bottom-20 right-1/4 w-48 h-48 text-primary animate-float" style={{ animationDelay: "1.5s" }} />
+          <MapPin className="absolute top-1/3 right-10 w-32 h-32 text-primary animate-float" style={{ animationDelay: "0.5s" }} />
         </motion.div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -293,13 +293,13 @@ const Home = () => {
         {/* Background Animated Elements */}
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.05 }}
+          whileInView={{ opacity: 0.2 }}
           viewport={{ once: true }}
           className="absolute inset-0 pointer-events-none"
         >
-          <Truck className="absolute top-10 left-10 w-32 h-32 text-primary animate-float" />
-          <Package className="absolute bottom-10 right-10 w-28 h-28 text-primary animate-float" style={{ animationDelay: "1s" }} />
-          <Clock className="absolute top-1/2 left-1/4 w-20 h-20 text-primary animate-float" style={{ animationDelay: "2s" }} />
+          <Truck className="absolute top-10 left-10 w-48 h-48 text-primary animate-float" />
+          <Package className="absolute bottom-10 right-10 w-40 h-40 text-primary animate-float" style={{ animationDelay: "1s" }} />
+          <Clock className="absolute top-1/2 left-1/4 w-36 h-36 text-primary animate-float" style={{ animationDelay: "2s" }} />
         </motion.div>
 
         <div className="container mx-auto px-4 relative z-10">
