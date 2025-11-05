@@ -8,94 +8,103 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 15% 15%;
+    /* Luxury cream background */
+    --background: 40 20% 97%;
+    --foreground: 220 30% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 15%;
+    --card-foreground: 220 30% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 15%;
+    --popover-foreground: 220 30% 12%;
 
-    /* Professional gold for ROYCE branding */
-    --primary: 40 65% 55%;
-    --primary-foreground: 0 0% 100%;
-    --primary-dark: 40 65% 40%;
+    /* Rich gold - luxury primary */
+    --primary: 43 84% 55%;
+    --primary-foreground: 220 30% 12%;
+    --primary-dark: 38 65% 35%;
 
-    /* Gray for roads and reliability */
-    --secondary: 220 15% 96%;
-    --secondary-foreground: 220 15% 15%;
+    /* Deep navy - luxury secondary */
+    --secondary: 220 35% 15%;
+    --secondary-foreground: 40 20% 97%;
 
-    --muted: 220 15% 96%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 40 15% 92%;
+    --muted-foreground: 220 15% 40%;
 
     /* Accent gold */
-    --accent: 40 60% 95%;
-    --accent-foreground: 40 65% 55%;
+    --accent: 43 75% 92%;
+    --accent-foreground: 220 30% 12%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 90%;
-    --input: 220 15% 90%;
-    --ring: 217 91% 60%;
+    --border: 40 20% 88%;
+    --input: 40 20% 88%;
+    --ring: 43 84% 55%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Custom logistics theme colors */
-    --road-gray: 220 15% 25%;
-    --road-light: 220 15% 85%;
-    --royal-gold: 40 65% 55%;
-    --gold-light: 40 60% 85%;
+    /* Custom luxury theme colors */
+    --navy-deep: 220 35% 15%;
+    --navy-rich: 220 30% 25%;
+    --gold-rich: 43 84% 55%;
+    --gold-light: 43 75% 92%;
+    --cream: 40 20% 97%;
+    --ivory: 40 30% 95%;
     
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(40 65% 55%) 0%, hsl(40 60% 45%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 15% 98%) 100%);
-    --gradient-overlay: linear-gradient(135deg, hsl(40 65% 55% / 0.95) 0%, hsl(40 65% 40% / 0.95) 100%);
+    /* Luxury gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(43 84% 55%) 0%, hsl(38 75% 45%) 100%);
+    --gradient-navy: linear-gradient(135deg, hsl(220 35% 15%) 0%, hsl(220 30% 25%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(40 20% 97%) 0%, hsl(40 30% 95%) 100%);
+    --gradient-overlay: linear-gradient(135deg, hsl(220 35% 15% / 0.92) 0%, hsl(220 30% 20% / 0.92) 100%);
+    --gradient-gold-shine: linear-gradient(135deg, hsl(43 84% 55%) 0%, hsl(43 84% 65%) 50%, hsl(43 84% 55%) 100%);
 
-    /* Shadows */
-    --shadow-soft: 0 2px 8px hsl(220 15% 15% / 0.08);
-    --shadow-medium: 0 4px 16px hsl(220 15% 15% / 0.12);
-    --shadow-large: 0 8px 32px hsl(220 15% 15% / 0.16);
+    /* Elegant shadows */
+    --shadow-soft: 0 2px 12px hsl(220 30% 12% / 0.06);
+    --shadow-medium: 0 4px 20px hsl(220 30% 12% / 0.1);
+    --shadow-large: 0 8px 40px hsl(220 30% 12% / 0.15);
+    --shadow-gold: 0 4px 24px hsl(43 84% 55% / 0.25);
     
-    /* Animations */
+    /* Smooth animations */
     --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
-    --background: 220 20% 10%;
-    --foreground: 0 0% 98%;
+    /* Deep luxury navy background */
+    --background: 220 35% 10%;
+    --foreground: 40 20% 97%;
 
-    --card: 220 20% 12%;
-    --card-foreground: 0 0% 98%;
+    --card: 220 35% 12%;
+    --card-foreground: 40 20% 97%;
 
-    --popover: 220 20% 12%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 220 35% 12%;
+    --popover-foreground: 40 20% 97%;
 
-    --primary: 40 65% 55%;
-    --primary-foreground: 0 0% 100%;
-    --primary-dark: 40 65% 40%;
+    --primary: 43 84% 55%;
+    --primary-foreground: 220 35% 10%;
+    --primary-dark: 38 65% 35%;
 
-    --secondary: 220 20% 18%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 220 30% 20%;
+    --secondary-foreground: 40 20% 97%;
 
-    --muted: 220 20% 18%;
+    --muted: 220 30% 18%;
     --muted-foreground: 220 15% 65%;
 
-    --accent: 220 20% 20%;
-    --accent-foreground: 40 65% 55%;
+    --accent: 220 30% 22%;
+    --accent-foreground: 43 84% 55%;
 
     --destructive: 0 62% 50%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 40 20% 97%;
 
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
-    --ring: 217 91% 60%;
+    --border: 220 30% 22%;
+    --input: 220 30% 22%;
+    --ring: 43 84% 55%;
 
-    --road-gray: 220 15% 70%;
-    --road-light: 220 15% 25%;
+    --navy-deep: 220 35% 10%;
+    --navy-rich: 220 30% 18%;
+    --gold-rich: 43 84% 55%;
+    --gold-light: 43 75% 25%;
   }
 }
 
@@ -107,6 +116,8 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    letter-spacing: -0.01em;
   }
 
   html {
@@ -121,6 +132,10 @@ All colors MUST be HSL.
 
   .animate-slide-right {
     animation: slide-right 2s ease-in-out infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 3s ease-in-out infinite;
   }
 
   @keyframes float {
@@ -140,13 +155,31 @@ All colors MUST be HSL.
       transform: translateX(20px);
     }
   }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
 
   .gradient-hero {
     background: var(--gradient-hero);
   }
+  
+  .gradient-navy {
+    background: var(--gradient-navy);
+  }
 
   .gradient-overlay {
     background: var(--gradient-overlay);
+  }
+  
+  .gradient-gold-shine {
+    background: var(--gradient-gold-shine);
+    background-size: 200% auto;
   }
 
   .shadow-soft {
@@ -160,6 +193,10 @@ All colors MUST be HSL.
   .shadow-large {
     box-shadow: var(--shadow-large);
   }
+  
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
 
   .transition-fast {
     transition: var(--transition-fast);
@@ -171,5 +208,13 @@ All colors MUST be HSL.
 
   .transition-slow {
     transition: var(--transition-slow);
+  }
+  
+  .text-luxury {
+    background: linear-gradient(135deg, hsl(43 84% 55%), hsl(43 84% 65%), hsl(43 84% 55%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
   }
 }
