@@ -17,10 +17,10 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 220 15% 15%;
 
-    /* Professional blue for logistics/trucking */
-    --primary: 217 91% 60%;
+    /* Professional gold for ROYCE branding */
+    --primary: 40 65% 55%;
     --primary-foreground: 0 0% 100%;
-    --primary-dark: 217 91% 45%;
+    --primary-dark: 40 65% 40%;
 
     /* Gray for roads and reliability */
     --secondary: 220 15% 96%;
@@ -29,9 +29,9 @@ All colors MUST be HSL.
     --muted: 220 15% 96%;
     --muted-foreground: 220 10% 46%;
 
-    /* Accent blue */
-    --accent: 210 100% 95%;
-    --accent-foreground: 217 91% 60%;
+    /* Accent gold */
+    --accent: 40 60% 95%;
+    --accent-foreground: 40 65% 55%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -45,13 +45,13 @@ All colors MUST be HSL.
     /* Custom logistics theme colors */
     --road-gray: 220 15% 25%;
     --road-light: 220 15% 85%;
-    --trust-blue: 217 91% 60%;
-    --sky-blue: 210 100% 95%;
+    --royal-gold: 40 65% 55%;
+    --gold-light: 40 60% 85%;
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(210 100% 50%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(40 65% 55%) 0%, hsl(40 60% 45%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 15% 98%) 100%);
-    --gradient-overlay: linear-gradient(135deg, hsl(217 91% 60% / 0.95) 0%, hsl(217 91% 45% / 0.95) 100%);
+    --gradient-overlay: linear-gradient(135deg, hsl(40 65% 55% / 0.95) 0%, hsl(40 65% 40% / 0.95) 100%);
 
     /* Shadows */
     --shadow-soft: 0 2px 8px hsl(220 15% 15% / 0.08);
@@ -74,9 +74,9 @@ All colors MUST be HSL.
     --popover: 220 20% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 217 91% 60%;
+    --primary: 40 65% 55%;
     --primary-foreground: 0 0% 100%;
-    --primary-dark: 217 91% 45%;
+    --primary-dark: 40 65% 40%;
 
     --secondary: 220 20% 18%;
     --secondary-foreground: 0 0% 98%;
@@ -85,7 +85,7 @@ All colors MUST be HSL.
     --muted-foreground: 220 15% 65%;
 
     --accent: 220 20% 20%;
-    --accent-foreground: 217 91% 60%;
+    --accent-foreground: 40 65% 55%;
 
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 98%;

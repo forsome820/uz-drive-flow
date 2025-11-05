@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Truck } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import royceLogo from "@/assets/royce-logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,14 +24,12 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="bg-primary rounded-lg p-2 group-hover:scale-110 transition-transform">
-              <Truck className="w-8 h-8 text-primary-foreground" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-foreground">UzbekLogistics</span>
-              <span className="text-xs text-muted-foreground">Driving Forward</span>
-            </div>
+          <Link to="/" className="flex items-center group">
+            <img 
+              src={royceLogo} 
+              alt="ROYCE Logistics" 
+              className="h-14 w-auto transition-transform group-hover:scale-105"
+            />
           </Link>
 
           {/* Desktop Navigation */}
