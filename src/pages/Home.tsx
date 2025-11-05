@@ -64,12 +64,12 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-primary-foreground">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white animate-shimmer gradient-gold-shine bg-clip-text text-transparent">
               Driving Uzbekistan's
               <br />
               Logistics Forward
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-primary-foreground/90 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl mb-8 text-white/95 max-w-2xl mx-auto">
               Professional trucking and logistics services connecting businesses across Central Asia
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -93,9 +93,9 @@ const Home = () => {
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
-          <div className="w-6 h-10 border-2 border-primary-foreground/50 rounded-full flex items-start justify-center p-2">
+          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
             <motion.div
-              className="w-1.5 h-1.5 bg-primary-foreground rounded-full"
+              className="w-1.5 h-1.5 bg-white rounded-full"
               animate={{ y: [0, 12, 0] }}
               transition={{ repeat: Infinity, duration: 2 }}
             />
@@ -138,8 +138,8 @@ const Home = () => {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</div>
-                <div className="text-sm md:text-base text-muted-foreground">{stat.label}</div>
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-2 animate-shimmer gradient-gold-shine bg-clip-text text-transparent">{stat.value}</div>
+                <div className="text-sm md:text-base text-secondary-foreground">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -177,7 +177,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 animate-shimmer gradient-gold-shine bg-clip-text text-transparent">Our Services</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Comprehensive logistics solutions tailored to your business needs
             </p>
@@ -247,27 +247,27 @@ const Home = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold mb-6">
+              <h2 className="text-4xl font-bold mb-6 text-secondary-foreground">
                 Coverage Across
                 <br />
-                <span className="text-primary">Central Asia</span>
+                <span className="animate-shimmer gradient-gold-shine bg-clip-text text-transparent">Central Asia</span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-secondary-foreground/90 mb-6">
                 Our extensive network covers all major routes throughout Uzbekistan and neighboring countries,
                 ensuring your cargo reaches its destination efficiently and safely.
               </p>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <span>All regions of Uzbekistan covered</span>
+                  <span className="text-secondary-foreground">All regions of Uzbekistan covered</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <span>Cross-border logistics to Kazakhstan, Kyrgyzstan, and Tajikistan</span>
+                  <span className="text-secondary-foreground">Cross-border logistics to Kazakhstan, Kyrgyzstan, and Tajikistan</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <span>Strategic hubs in Tashkent, Samarkand, and Bukhara</span>
+                  <span className="text-secondary-foreground">Strategic hubs in Tashkent, Samarkand, and Bukhara</span>
                 </li>
               </ul>
             </motion.div>
@@ -310,8 +310,8 @@ const Home = () => {
             className="gradient-hero rounded-2xl p-12 text-center shadow-large"
           >
             <Users className="w-16 h-16 text-primary-foreground mx-auto mb-6" />
-            <h2 className="text-4xl font-bold text-primary-foreground mb-4">Join Our Team</h2>
-            <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold text-primary-foreground mb-4 animate-shimmer gradient-gold-shine bg-clip-text text-transparent">Join Our Team</h2>
+            <p className="text-xl text-primary-foreground/95 mb-8 max-w-2xl mx-auto">
               We're always looking for professional drivers and logistics specialists to join our growing team.
             </p>
             <Link to="/careers">
