@@ -20,7 +20,7 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-secondary/98 backdrop-blur-md border-b border-primary/20 shadow-gold">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-soft">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -28,21 +28,17 @@ const Navigation = () => {
             <img 
               src={royceLogo} 
               alt="ROYCE Logistics" 
-              className="h-16 w-auto transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_20px_rgba(240,190,80,0.4)]"
+              className="h-14 w-auto transition-transform group-hover:scale-105"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link key={link.path} to={link.path}>
                 <Button
                   variant={isActive(link.path) ? "default" : "ghost"}
-                  className={`transition-smooth font-medium ${
-                    isActive(link.path) 
-                      ? "bg-primary text-primary-foreground shadow-gold" 
-                      : "text-secondary-foreground hover:text-primary hover:bg-accent/50"
-                  }`}
+                  className="transition-smooth"
                 >
                   {link.name}
                 </Button>
@@ -52,7 +48,7 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg text-secondary-foreground hover:bg-accent/50 hover:text-primary transition-smooth"
+            className="md:hidden p-2 rounded-lg hover:bg-accent transition-smooth"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -68,18 +64,14 @@ const Navigation = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-primary/20 bg-secondary/98"
+            className="md:hidden border-t border-border bg-background"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
               {navLinks.map((link) => (
                 <Link key={link.path} to={link.path} onClick={() => setIsOpen(false)}>
                   <Button
                     variant={isActive(link.path) ? "default" : "ghost"}
-                    className={`w-full justify-start transition-smooth ${
-                      isActive(link.path)
-                        ? "bg-primary text-primary-foreground shadow-gold"
-                        : "text-secondary-foreground hover:text-primary hover:bg-accent/50"
-                    }`}
+                    className="w-full justify-start"
                   >
                     {link.name}
                   </Button>
