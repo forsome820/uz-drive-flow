@@ -64,12 +64,12 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-primary-foreground">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
               Driving Uzbekistan's
               <br />
               Logistics Forward
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-primary-foreground/90 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
               Professional trucking and logistics services connecting businesses across Central Asia
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
