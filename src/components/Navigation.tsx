@@ -28,7 +28,7 @@ const Navigation = () => {
             <img 
               src={royceLogo} 
               alt="ROYCE Logistics" 
-              className="h-14 w-auto transition-transform group-hover:scale-105"
+              className="h-20 w-auto transition-transform group-hover:scale-105"
             />
           </Link>
 
