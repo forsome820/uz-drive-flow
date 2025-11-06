@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import royceLogo from "@/assets/royce-logo-new.png";
+import royceLogo from "@/assets/royce-logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,13 +22,13 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-soft">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-32">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center group">
             <img 
               src={royceLogo} 
               alt="ROYCE Logistics" 
-              className="h-28 w-auto transition-transform group-hover:scale-105"
+              className="h-20 w-auto transition-transform group-hover:scale-105"
             />
           </Link>
 
