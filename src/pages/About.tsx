@@ -8,12 +8,12 @@ const About = () => {
     {
       icon: Target,
       title: "Mission",
-      description: "To provide reliable, efficient, and professional logistics solutions that power businesses across Central Asia.",
+      description: "To provide reliable, efficient, and professional logistics solutions that power businesses across the United States.",
     },
     {
       icon: Eye,
       title: "Vision",
-      description: "To become the leading logistics partner in Central Asia, known for innovation, reliability, and customer satisfaction.",
+      description: "To become the leading logistics partner in the United States, known for innovation, reliability, and customer satisfaction.",
     },
     {
       icon: Award,
@@ -37,7 +37,7 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">About UzbekLogistics</h1>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">About Royce Logistics</h1>
             <p className="text-xl text-muted-foreground">
               Building bridges between businesses through reliable transportation and logistics services since 2008
             </p>
@@ -56,7 +56,7 @@ const About = () => {
             >
               <img
                 src={warehouse}
-                alt="UzbekLogistics warehouse facility"
+                alt="Royce Logistics warehouse facility"
                 className="rounded-lg shadow-large"
               />
             </motion.div>
@@ -69,13 +69,13 @@ const About = () => {
               <h2 className="text-4xl font-bold mb-6">Our Story</h2>
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p>
-                  Founded in 2008 in Tashkent, UzbekLogistics began with a simple mission: to provide
+                  Founded in 2008, Royce Logistics began with a simple mission: to provide
                   reliable trucking services that businesses could depend on. From our humble beginnings
-                  with just 5 trucks, we've grown into one of Central Asia's most trusted logistics partners.
+                  with just 5 trucks, we've grown into one of America's most trusted logistics partners.
                 </p>
                 <p>
                   Today, we operate a modern fleet of over 50 vehicles, serving hundreds of clients across
-                  Uzbekistan and neighboring countries. Our success is built on the foundation of
+                  the United States. Our success is built on the foundation of
                   reliability, professionalism, and an unwavering commitment to customer satisfaction.
                 </p>
                 <p>
@@ -141,7 +141,7 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold mb-6">Why Choose UzbekLogistics?</h2>
+            <h2 className="text-4xl font-bold mb-6">Why Choose Royce Logistics?</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">

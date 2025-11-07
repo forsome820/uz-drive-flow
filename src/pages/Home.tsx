@@ -21,7 +21,7 @@ const Home = () => {
     {
       icon: Package,
       title: "Cargo Transportation",
-      description: "Reliable delivery of goods across Uzbekistan and Central Asia with our modern fleet.",
+      description: "Reliable delivery of goods across the United States with our modern fleet.",
     },
     {
       icon: Clock,
@@ -65,12 +65,12 @@ const Home = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
-              Driving Uzbekistan's
+              Driving America's
               <br />
               Logistics Forward
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
-              Professional trucking and logistics services connecting businesses across Central Asia
+              Professional trucking and logistics services connecting businesses across the United States
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/services">
@@ -250,24 +250,24 @@ const Home = () => {
               <h2 className="text-4xl font-bold mb-6">
                 Coverage Across
                 <br />
-                <span className="text-primary">Central Asia</span>
+                <span className="text-primary">The United States</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Our extensive network covers all major routes throughout Uzbekistan and neighboring countries,
+                Our extensive network covers all major routes throughout the United States,
                 ensuring your cargo reaches its destination efficiently and safely.
               </p>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <span>All regions of Uzbekistan covered</span>
+                  <span>Nationwide coverage across all 50 states</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <span>Cross-border logistics to Kazakhstan, Kyrgyzstan, and Tajikistan</span>
+                  <span>Major interstate routes and regional connections</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <span>Strategic hubs in Tashkent, Samarkand, and Bukhara</span>
+                  <span>Strategic hubs across the country</span>
                 </li>
               </ul>
             </motion.div>
@@ -280,7 +280,7 @@ const Home = () => {
             >
               <img
                 src={mapUzbekistan}
-                alt="Coverage map of Uzbekistan and Central Asia"
+                alt="Coverage map of the United States"
                 className="rounded-lg shadow-large animate-float"
               />
             </motion.div>

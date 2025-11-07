@@ -1,23 +1,13 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { Users, Briefcase, Heart, TrendingUp, Upload } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 
 const Careers = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    position: "",
-    experience: "",
-    message: "",
-  });
   const { toast } = useToast();
 
   const benefits = [
@@ -54,35 +44,6 @@ const Careers = () => {
     "Other",
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.phone || !formData.position) {
-      toast({
-        title: "Missing Information",
-        description: "Please fill in all required fields.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    toast({
-      title: "Application Submitted!",
-      description: "Thank you for your interest. We'll review your application and contact you soon.",
-    });
-
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      position: "",
-      experience: "",
-      message: "",
-    });
-  };
-
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
@@ -95,7 +56,7 @@ const Careers = () => {
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Join Our Team</h1>
             <p className="text-xl text-muted-foreground">
-              Build your career with one of Central Asia's leading logistics companies
+              Build your career with one of America's leading logistics companies
             </p>
           </motion.div>
         </div>
@@ -165,15 +126,18 @@ const Careers = () => {
           >
             <Card>
               <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form action="https://formsubmit.co/forsome820@gmail.com" method="POST" className="space-y-6">
+                  <input type="hidden" name="_subject" value="New Job Application from Royce Logistics Website" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
+                  
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Full Name *</Label>
                       <Input
                         id="name"
+                        name="name"
                         placeholder="John Doe"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
                       />
                     </div>
@@ -182,10 +146,9 @@ const Careers = () => {
                       <Label htmlFor="email">Email *</Label>
                       <Input
                         id="email"
+                        name="email"
                         type="email"
                         placeholder="john@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         required
                       />
                     </div>
@@ -196,31 +159,28 @@ const Careers = () => {
                       <Label htmlFor="phone">Phone Number *</Label>
                       <Input
                         id="phone"
+                        name="phone"
                         type="tel"
-                        placeholder="+998 XX XXX XX XX"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="+1 (XXX) XXX-XXXX"
                         required
                       />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="position">Position *</Label>
-                      <Select
-                        value={formData.position}
-                        onValueChange={(value) => setFormData({ ...formData, position: value })}
+                      <select
+                        id="position"
+                        name="position"
+                        required
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                       >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select position" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {positions.map((position) => (
-                            <SelectItem key={position} value={position}>
-                              {position}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                        <option value="">Select position</option>
+                        {positions.map((position) => (
+                          <option key={position} value={position}>
+                            {position}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </div>
 
@@ -228,9 +188,8 @@ const Careers = () => {
                     <Label htmlFor="experience">Years of Experience</Label>
                     <Input
                       id="experience"
+                      name="experience"
                       placeholder="e.g., 5 years"
-                      value={formData.experience}
-                      onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
                     />
                   </div>
 
@@ -238,10 +197,9 @@ const Careers = () => {
                     <Label htmlFor="message">Additional Information</Label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Tell us about yourself, your qualifications, and why you'd like to join our team..."
                       className="min-h-32"
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     />
                   </div>
 
@@ -253,6 +211,7 @@ const Careers = () => {
                         Click to upload or drag and drop
                       </p>
                       <p className="text-xs text-muted-foreground">PDF, DOC, DOCX (max 5MB)</p>
+                      <input type="file" name="attachment" accept=".pdf,.doc,.docx" className="hidden" />
                     </div>
                   </div>
 
@@ -326,7 +285,7 @@ const Careers = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span>Proficiency in Russian, Uzbek, and English</span>
+                  <span>Strong communication skills</span>
                 </li>
               </ul>
             </motion.div>

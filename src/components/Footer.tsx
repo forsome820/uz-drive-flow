@@ -13,12 +13,12 @@ const Footer = () => {
                 <Truck className="w-6 h-6 text-primary-foreground" />
               </div>
               <div>
-                <h3 className="font-bold text-lg">UzbekLogistics</h3>
+                <h3 className="font-bold text-lg">Royce Logistics</h3>
                 <p className="text-xs text-muted-foreground">Driving Forward</p>
               </div>
             </div>
             <p className="text-sm text-muted-foreground">
-              Leading logistics and trucking company in Uzbekistan, delivering excellence across Central Asia.
+              Leading logistics and trucking company in the United States, delivering excellence nationwide.
             </p>
           </div>
 
@@ -66,22 +66,22 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
-                <span>+998 71 123 45 67</span>
+                <span>+1 (555) 123-4567</span>
               </li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
-                <span>info@uzbeklogistics.uz</span>
+                <span>info@roycelogistics.com</span>
               </li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
-                <span>Tashkent, Uzbekistan</span>
+                <span>United States</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} UzbekLogistics. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Royce Logistics. All rights reserved.</p>
         </div>
       </div>
     </footer>

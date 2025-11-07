@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -9,30 +8,23 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
   const { toast } = useToast();
 
   const contactInfo = [
     {
       icon: Phone,
       title: "Phone",
-      details: ["+998 71 123 45 67", "+998 90 123 45 67"],
+      details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["info@uzbeklogistics.uz", "support@uzbeklogistics.uz"],
+      details: ["info@roycelogistics.com", "support@roycelogistics.com"],
     },
     {
       icon: MapPin,
       title: "Address",
-      details: ["Amir Temur Street 15", "Tashkent 100000, Uzbekistan"],
+      details: ["United States"],
     },
     {
       icon: Clock,
@@ -40,34 +32,6 @@ const Contact = () => {
       details: ["Mon - Fri: 8:00 AM - 6:00 PM", "Sat: 9:00 AM - 2:00 PM"],
     },
   ];
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
-      toast({
-        title: "Missing Information",
-        description: "Please fill in all required fields.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you within 24 hours.",
-    });
-
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-    });
-  };
 
   return (
     <div className="min-h-screen pt-20">
@@ -130,14 +94,17 @@ const Contact = () => {
               <Card>
                 <CardContent className="p-8">
                   <h2 className="text-3xl font-bold mb-6">Send us a Message</h2>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form action="https://formsubmit.co/forsome820@gmail.com" method="POST" className="space-y-6">
+                    <input type="hidden" name="_subject" value="New Contact Form Submission from Royce Logistics Website" />
+                    <input type="hidden" name="_captcha" value="false" />
+                    <input type="hidden" name="_template" value="table" />
+                    
                     <div className="space-y-2">
                       <Label htmlFor="name">Full Name *</Label>
                       <Input
                         id="name"
+                        name="name"
                         placeholder="John Doe"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
                       />
                     </div>
@@ -146,10 +113,9 @@ const Contact = () => {
                       <Label htmlFor="email">Email *</Label>
                       <Input
                         id="email"
+                        name="email"
                         type="email"
                         placeholder="john@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         required
                       />
                     </div>
@@ -158,10 +124,9 @@ const Contact = () => {
                       <Label htmlFor="phone">Phone Number</Label>
                       <Input
                         id="phone"
+                        name="phone"
                         type="tel"
-                        placeholder="+998 XX XXX XX XX"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="+1 (XXX) XXX-XXXX"
                       />
                     </div>
 
@@ -169,9 +134,8 @@ const Contact = () => {
                       <Label htmlFor="subject">Subject</Label>
                       <Input
                         id="subject"
+                        name="subject"
                         placeholder="Quote Request / General Inquiry"
-                        value={formData.subject}
-                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       />
                     </div>
 
@@ -179,10 +143,9 @@ const Contact = () => {
                       <Label htmlFor="message">Message *</Label>
                       <Textarea
                         id="message"
+                        name="message"
                         placeholder="Tell us about your shipping needs or ask us any questions..."
                         className="min-h-32"
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         required
                       />
                     </div>
@@ -204,14 +167,14 @@ const Contact = () => {
               <Card className="h-full">
                 <CardContent className="p-0 h-full">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.714358194577!2d69.24000931542726!3d41.311151179270576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b0cc379e9c3%3A0xa5a9323b4aa5cb98!2sTashkent%2C%20Uzbekistan!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368428698!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzQ3LjMiTiA3NMKwMDAnMDcuNyJX!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
                     width="100%"
                     height="100%"
                     style={{ border: 0, minHeight: "600px" }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="UzbekLogistics Location"
+                    title="Royce Logistics Location"
                   />
                 </CardContent>
               </Card>
@@ -231,16 +194,16 @@ const Contact = () => {
           >
             <h2 className="text-3xl font-bold mb-4">Need a Quick Quote?</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Call us directly at <a href="tel:+998711234567" className="text-primary font-semibold hover:underline">+998 71 123 45 67</a> for immediate assistance and competitive quotes
+              Call us directly at <a href="tel:+15551234567" className="text-primary font-semibold hover:underline">+1 (555) 123-4567</a> for immediate assistance and competitive quotes
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:+998711234567">
+              <a href="tel:+15551234567">
                 <Button size="lg" className="gap-2">
                   <Phone className="w-5 h-5" />
                   Call Now
                 </Button>
               </a>
-              <a href="mailto:info@uzbeklogistics.uz">
+              <a href="mailto:info@roycelogistics.com">
                 <Button size="lg" variant="secondary" className="gap-2">
                   <Mail className="w-5 h-5" />
                   Email Us
