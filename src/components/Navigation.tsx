@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import royceLogo from "@/assets/royce-logo-new.png";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,16 +45,20 @@ const Navigation = () => {
                 </Button>
               </Link>
             ))}
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 rounded-lg hover:bg-accent transition-smooth"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="p-2 rounded-lg hover:bg-accent transition-smooth"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
