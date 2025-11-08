@@ -71,25 +71,25 @@ All colors MUST be HSL.
   .dark {
     /* Dark charcoal background */
     --background: 60 2% 11%;
-    --foreground: 0 0% 100%;
+    --foreground: 39 77% 85%;
 
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 7%;
+    --card-foreground: 39 77% 85%;
 
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 39 77% 85%;
 
     /* Bright gold primary */
     --primary: 39 94% 57%;
-    --primary-foreground: 0 0% 0%;
-    --primary-dark: 39 80% 47%;
+    --primary-foreground: 60 2% 11%;
+    --primary-dark: 39 94% 47%;
 
-    /* Light gold secondary */
-    --secondary: 39 77% 77%;
-    --secondary-foreground: 0 0% 0%;
+    /* Muted gold secondary */
+    --secondary: 39 50% 30%;
+    --secondary-foreground: 39 77% 85%;
 
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 60 2% 18%;
+    --muted-foreground: 39 40% 65%;
 
     /* Blue accent */
     --accent: 233 97% 56%;
@@ -98,13 +98,15 @@ All colors MUST be HSL.
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
+    --border: 60 2% 22%;
+    --input: 60 2% 18%;
     --ring: 39 94% 57%;
 
     --charcoal: 60 2% 11%;
     
     --gradient-overlay: linear-gradient(135deg, hsl(0 0% 0% / 0.85) 0%, hsl(60 2% 11% / 0.90) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(39 94% 57%) 0%, hsl(39 80% 47%) 100%);
+    --gradient-gold-shine: linear-gradient(90deg, hsl(39 94% 57%), hsl(39 100% 70%), hsl(39 94% 57%));
   }
 }
 
