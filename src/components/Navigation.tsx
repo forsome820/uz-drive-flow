@@ -21,7 +21,7 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-soft">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-soft transition-smooth">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -29,7 +29,7 @@ const Navigation = () => {
             <img 
               src={royceLogo} 
               alt="ROYCE Logistics" 
-              className="h-20 w-auto transition-transform group-hover:scale-105"
+              className="h-20 w-auto transition-smooth group-hover:scale-105"
             />
           </Link>
 
@@ -39,7 +39,7 @@ const Navigation = () => {
               <Link key={link.path} to={link.path}>
                 <Button
                   variant={isActive(link.path) ? "default" : "ghost"}
-                  className="transition-smooth"
+                  className="transition-smooth hover:scale-105"
                 >
                   {link.name}
                 </Button>
@@ -69,6 +69,7 @@ const Navigation = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
             className="md:hidden border-t border-border bg-background"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
@@ -76,7 +77,7 @@ const Navigation = () => {
                 <Link key={link.path} to={link.path} onClick={() => setIsOpen(false)}>
                   <Button
                     variant={isActive(link.path) ? "default" : "ghost"}
-                    className="w-full justify-start"
+                    className="w-full justify-start transition-smooth hover:translate-x-1"
                   >
                     {link.name}
                   </Button>

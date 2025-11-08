@@ -25,7 +25,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="transition-smooth"
+      className="transition-smooth hover:scale-110 hover:rotate-12"
       aria-label="Toggle theme"
     >
       {theme === "dark" ? (

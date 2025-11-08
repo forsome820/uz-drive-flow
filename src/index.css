@@ -128,6 +128,11 @@ All colors MUST be HSL.
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold;
   }
+
+  /* Smooth transitions for all interactive elements */
+  a, button, input, select, textarea, [role="button"] {
+    @apply transition-smooth;
+  }
 }
 
 @layer utilities {
