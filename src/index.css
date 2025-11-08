@@ -86,7 +86,7 @@ All colors MUST be HSL.
 
     /* Muted gold secondary */
     --secondary: 39 50% 30%;
-    --secondary-foreground: 39 77% 85%;
+    --secondary-foreground: 0 0% 95%;
 
     --muted: 60 2% 18%;
     --muted-foreground: 39 40% 65%;
