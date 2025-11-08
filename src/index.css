@@ -8,61 +8,59 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Luxury cream background */
-    --background: 40 30% 97%;
-    --foreground: 220 25% 15%;
+    /* Clean white background */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
 
     /* Elevated surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 15%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 15%;
+    --popover-foreground: 0 0% 0%;
 
-    /* Rich gold from logo - luxury primary */
-    --primary: 42 88% 55%;
-    --primary-foreground: 220 25% 15%;
-    --primary-dark: 42 70% 45%;
+    /* Bright gold primary */
+    --primary: 39 94% 57%;
+    --primary-foreground: 0 0% 0%;
+    --primary-dark: 39 80% 47%;
 
-    /* Sophisticated taupe for secondary elements */
-    --secondary: 35 20% 90%;
-    --secondary-foreground: 220 25% 15%;
+    /* Light gold secondary */
+    --secondary: 39 77% 77%;
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 35 20% 94%;
-    --muted-foreground: 220 15% 40%;
+    --muted: 39 77% 90%;
+    --muted-foreground: 0 0% 30%;
 
-    /* Soft gold accent */
-    --accent: 42 85% 92%;
-    --accent-foreground: 220 25% 15%;
+    /* Blue accent */
+    --accent: 233 97% 56%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 35 20% 88%;
-    --input: 35 20% 88%;
-    --ring: 42 88% 55%;
+    --border: 39 77% 85%;
+    --input: 39 77% 85%;
+    --ring: 39 94% 57%;
 
     --radius: 0.75rem;
 
-    /* Luxury theme extensions */
-    --luxury-gold: 42 88% 55%;
-    --luxury-gold-light: 42 85% 70%;
-    --luxury-gold-dark: 42 70% 40%;
-    --luxury-charcoal: 220 25% 15%;
-    --luxury-cream: 40 30% 97%;
-    --luxury-taupe: 35 20% 85%;
+    /* Custom palette colors */
+    --gold-light: 39 77% 77%;
+    --gold-bright: 39 94% 57%;
+    --charcoal: 60 2% 11%;
+    --blue-accent: 233 97% 56%;
     
     /* Premium gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(42 88% 55%) 0%, hsl(42 70% 45%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(40 30% 97%) 0%, hsl(35 25% 95%) 100%);
-    --gradient-overlay: linear-gradient(135deg, hsl(220 25% 15% / 0.85) 0%, hsl(220 30% 10% / 0.90) 100%);
-    --gradient-gold-shine: linear-gradient(90deg, hsl(42 88% 55%), hsl(42 95% 70%), hsl(42 88% 55%));
+    --gradient-hero: linear-gradient(135deg, hsl(39 94% 57%) 0%, hsl(39 80% 47%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(39 77% 95%) 100%);
+    --gradient-overlay: linear-gradient(135deg, hsl(0 0% 0% / 0.85) 0%, hsl(60 2% 11% / 0.90) 100%);
+    --gradient-gold-shine: linear-gradient(90deg, hsl(39 94% 57%), hsl(39 100% 70%), hsl(39 94% 57%));
 
     /* Elegant shadows */
-    --shadow-soft: 0 2px 12px hsl(42 88% 55% / 0.08);
-    --shadow-medium: 0 4px 20px hsl(42 88% 55% / 0.12);
-    --shadow-large: 0 8px 40px hsl(42 88% 55% / 0.18);
-    --shadow-luxury: 0 10px 50px hsl(42 70% 40% / 0.25);
+    --shadow-soft: 0 2px 12px hsl(39 94% 57% / 0.08);
+    --shadow-medium: 0 4px 20px hsl(39 94% 57% / 0.12);
+    --shadow-large: 0 8px 40px hsl(39 94% 57% / 0.18);
+    --shadow-luxury: 0 10px 50px hsl(39 80% 47% / 0.25);
     
     /* Smooth animations */
     --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -71,41 +69,42 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Deep navy for luxury dark mode */
-    --background: 220 35% 8%;
-    --foreground: 40 30% 95%;
+    /* Dark charcoal background */
+    --background: 60 2% 11%;
+    --foreground: 0 0% 100%;
 
-    --card: 220 30% 12%;
-    --card-foreground: 40 30% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 220 30% 12%;
-    --popover-foreground: 40 30% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Gold remains vibrant in dark mode */
-    --primary: 42 88% 60%;
-    --primary-foreground: 220 35% 8%;
-    --primary-dark: 42 70% 50%;
+    /* Bright gold primary */
+    --primary: 39 94% 57%;
+    --primary-foreground: 0 0% 0%;
+    --primary-dark: 39 80% 47%;
 
-    --secondary: 220 25% 18%;
-    --secondary-foreground: 40 30% 95%;
+    /* Light gold secondary */
+    --secondary: 39 77% 77%;
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 220 25% 16%;
-    --muted-foreground: 40 20% 65%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 220 25% 20%;
-    --accent-foreground: 42 88% 60%;
+    /* Blue accent */
+    --accent: 233 97% 56%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
-    --destructive-foreground: 40 30% 95%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 25% 22%;
-    --input: 220 25% 22%;
-    --ring: 42 88% 60%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 39 94% 57%;
 
-    --luxury-charcoal: 220 35% 8%;
-    --luxury-taupe: 220 20% 30%;
+    --charcoal: 60 2% 11%;
     
-    --gradient-overlay: linear-gradient(135deg, hsl(220 35% 8% / 0.85) 0%, hsl(220 40% 5% / 0.90) 100%);
+    --gradient-overlay: linear-gradient(135deg, hsl(0 0% 0% / 0.85) 0%, hsl(60 2% 11% / 0.90) 100%);
   }
 }
 
