@@ -99,11 +99,18 @@ const Services = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Card className="h-full hover:shadow-large transition-smooth group">
+                  <Card className="h-full hover:shadow-large transition-smooth group cursor-pointer">
                     <CardContent className="p-6">
-                      <div className="bg-accent rounded-lg p-4 w-fit mb-4 group-hover:scale-110 transition-smooth">
+                      <motion.div 
+                        className="bg-accent rounded-lg p-4 w-fit mb-4"
+                        whileHover={{ 
+                          scale: 1.2,
+                          rotate: [0, -10, 10, -10, 0],
+                          transition: { duration: 0.5 }
+                        }}
+                      >
                         <Icon className="w-8 h-8 text-accent-foreground" />
-                      </div>
+                      </motion.div>
                       <h3 className="text-2xl font-semibold mb-3">{service.title}</h3>
                       <p className="text-muted-foreground mb-4">{service.description}</p>
                       <ul className="space-y-2">
@@ -140,18 +147,43 @@ const Services = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {process.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative"
-              >
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary-foreground mx-auto mb-4 shadow-medium">
-                    {item.step}
-                  </div>
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    delay: index * 0.15,
+                    duration: 0.5,
+                    ease: "easeOut"
+                  }}
+                  whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                  className="relative"
+                >
+                  <div className="text-center">
+                    <motion.div 
+                      className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary-foreground mx-auto mb-4 shadow-medium"
+                      whileHover={{ 
+                        scale: 1.2,
+                        rotate: 360,
+                        transition: { duration: 0.6 }
+                      }}
+                      animate={{
+                        boxShadow: [
+                          "0 4px 20px hsl(var(--primary) / 0.12)",
+                          "0 8px 30px hsl(var(--primary) / 0.25)",
+                          "0 4px 20px hsl(var(--primary) / 0.12)"
+                        ]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: index * 0.3
+                      }}
+                    >
+                      {item.step}
+                    </motion.div>
                   <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                   <p className="text-muted-foreground">{item.description}</p>
                 </div>
@@ -169,14 +201,26 @@ const Services = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
+              whileHover={{ scale: 1.1, y: -5 }}
               className="text-center"
             >
-              <div className="bg-accent rounded-full p-6 w-fit mx-auto mb-4">
+              <motion.div 
+                className="bg-accent rounded-full p-6 w-fit mx-auto mb-4"
+                animate={{ 
+                  y: [0, -10, 0],
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                whileHover={{ rotate: 360, transition: { duration: 0.6 } }}
+              >
                 <MapPin className="w-8 h-8 text-accent-foreground" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-semibold mb-2">Real-Time Tracking</h3>
               <p className="text-muted-foreground">
                 Monitor your shipments 24/7 with our advanced GPS tracking system
@@ -184,15 +228,28 @@ const Services = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
+              whileHover={{ scale: 1.1, y: -5 }}
               className="text-center"
             >
-              <div className="bg-accent rounded-full p-6 w-fit mx-auto mb-4">
+              <motion.div 
+                className="bg-accent rounded-full p-6 w-fit mx-auto mb-4"
+                animate={{ 
+                  y: [0, -10, 0],
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+                whileHover={{ rotate: 360, transition: { duration: 0.6 } }}
+              >
                 <Headphones className="w-8 h-8 text-accent-foreground" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-semibold mb-2">24/7 Support</h3>
               <p className="text-muted-foreground">
                 Our customer service team is always available to assist you
@@ -200,15 +257,28 @@ const Services = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
+              whileHover={{ scale: 1.1, y: -5 }}
               className="text-center"
             >
-              <div className="bg-accent rounded-full p-6 w-fit mx-auto mb-4">
+              <motion.div 
+                className="bg-accent rounded-full p-6 w-fit mx-auto mb-4"
+                animate={{ 
+                  y: [0, -10, 0],
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+                whileHover={{ rotate: 360, transition: { duration: 0.6 } }}
+              >
                 <Shield className="w-8 h-8 text-accent-foreground" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-semibold mb-2">Secure & Insured</h3>
               <p className="text-muted-foreground">
                 All shipments are fully insured and handled with maximum security

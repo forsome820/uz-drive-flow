@@ -83,16 +83,42 @@ const Careers = () => {
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 30, scale: 0.8 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ 
+                    delay: index * 0.15,
+                    duration: 0.6,
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                  whileHover={{ 
+                    y: -15, 
+                    scale: 1.05,
+                    transition: { duration: 0.3 }
+                  }}
                 >
                   <Card className="h-full hover:shadow-large transition-smooth">
                     <CardContent className="p-6 text-center">
-                      <div className="bg-accent rounded-full p-4 w-fit mx-auto mb-4">
+                      <motion.div 
+                        className="bg-accent rounded-full p-4 w-fit mx-auto mb-4"
+                        whileHover={{ 
+                          scale: 1.3,
+                          rotate: [0, 360],
+                          transition: { duration: 0.6 }
+                        }}
+                        animate={{
+                          y: [0, -8, 0],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: index * 0.4
+                        }}
+                      >
                         <Icon className="w-8 h-8 text-accent-foreground" />
-                      </div>
+                      </motion.div>
                       <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
                       <p className="text-muted-foreground">{benefit.description}</p>
                     </CardContent>

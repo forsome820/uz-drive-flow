@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Truck } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
@@ -7,11 +8,23 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="flex items-center gap-3 mb-4">
-              <div className="bg-primary rounded-lg p-2">
+              <motion.div 
+                className="bg-primary rounded-lg p-2"
+                whileHover={{ 
+                  scale: 1.1,
+                  rotate: 360,
+                  transition: { duration: 0.6 }
+                }}
+              >
                 <Truck className="w-6 h-6 text-primary-foreground" />
-              </div>
+              </motion.div>
               <div>
                 <h3 className="font-bold text-lg">Royce Logistics</h3>
                 <p className="text-xs text-muted-foreground">Driving Forward</p>
@@ -20,64 +33,99 @@ const Footer = () => {
             <p className="text-sm text-muted-foreground">
               Leading logistics and trucking company in the United States, delivering excellence nationwide.
             </p>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li>
+              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
                 <Link to="/" className="text-sm text-muted-foreground hover:text-primary transition-smooth">
                   Home
                 </Link>
-              </li>
-              <li>
+              </motion.li>
+              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
                 <Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-smooth">
                   About Us
                 </Link>
-              </li>
-              <li>
+              </motion.li>
+              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
                 <Link to="/services" className="text-sm text-muted-foreground hover:text-primary transition-smooth">
                   Services
                 </Link>
-              </li>
-              <li>
+              </motion.li>
+              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
                 <Link to="/careers" className="text-sm text-muted-foreground hover:text-primary transition-smooth">
                   Join Our Team
                 </Link>
-              </li>
+              </motion.li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Services */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Cargo Transportation</li>
-              <li>Warehousing</li>
-              <li>Fleet Management</li>
-              <li>Express Delivery</li>
+              <motion.li whileHover={{ x: 5, color: "hsl(var(--primary))" }} transition={{ duration: 0.2 }}>
+                Cargo Transportation
+              </motion.li>
+              <motion.li whileHover={{ x: 5, color: "hsl(var(--primary))" }} transition={{ duration: 0.2 }}>
+                Warehousing
+              </motion.li>
+              <motion.li whileHover={{ x: 5, color: "hsl(var(--primary))" }} transition={{ duration: 0.2 }}>
+                Fleet Management
+              </motion.li>
+              <motion.li whileHover={{ x: 5, color: "hsl(var(--primary))" }} transition={{ duration: 0.2 }}>
+                Express Delivery
+              </motion.li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             <h4 className="font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-3">
-              <li className="flex items-start gap-2 text-sm text-muted-foreground">
+              <motion.li 
+                className="flex items-start gap-2 text-sm text-muted-foreground"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.2 }}
+              >
                 <Phone className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
                 <span>+1 (555) 123-4567</span>
-              </li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground">
+              </motion.li>
+              <motion.li 
+                className="flex items-start gap-2 text-sm text-muted-foreground"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.2 }}
+              >
                 <Mail className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
                 <span>info@roycelogistics.com</span>
-              </li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground">
+              </motion.li>
+              <motion.li 
+                className="flex items-start gap-2 text-sm text-muted-foreground"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.2 }}
+              >
                 <MapPin className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
                 <span>United States</span>
-              </li>
+              </motion.li>
             </ul>
-          </div>
+          </motion.div>
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">

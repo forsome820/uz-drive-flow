@@ -60,16 +60,33 @@ const Contact = () => {
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 20, rotateY: -20 }}
+                  whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  whileHover={{ y: -10, rotateY: 5 }}
                 >
                   <Card className="h-full hover:shadow-large transition-smooth">
                     <CardContent className="p-6 text-center">
-                      <div className="bg-accent rounded-full p-4 w-fit mx-auto mb-4">
+                      <motion.div 
+                        className="bg-accent rounded-full p-4 w-fit mx-auto mb-4"
+                        whileHover={{ 
+                          scale: 1.3,
+                          rotate: 360,
+                          transition: { duration: 0.5 }
+                        }}
+                        animate={{
+                          scale: [1, 1.1, 1],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: index * 0.3
+                        }}
+                      >
                         <Icon className="w-6 h-6 text-accent-foreground" />
-                      </div>
+                      </motion.div>
                       <h3 className="font-semibold mb-3">{info.title}</h3>
                       {info.details.map((detail, i) => (
                         <p key={i} className="text-sm text-muted-foreground">
@@ -87,9 +104,11 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -30, rotateY: -10 }}
+              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              whileHover={{ scale: 1.02 }}
             >
               <Card>
                 <CardContent className="p-8">
@@ -160,9 +179,11 @@ const Contact = () => {
 
             {/* Map */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: 30, rotateY: 10 }}
+              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              whileHover={{ scale: 1.02 }}
             >
               <Card className="h-full">
                 <CardContent className="p-0 h-full">

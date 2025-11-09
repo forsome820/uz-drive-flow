@@ -1,9 +1,19 @@
-import { motion } from "framer-motion";
-import { Target, Eye, Award, Users } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Target, Eye, Award, Users, TrendingUp, Package, Shield } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import warehouse from "@/assets/warehouse.jpg";
+import { useRef } from "react";
 
 const About = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
+
   const values = [
     {
       icon: Target,
@@ -28,16 +38,66 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20" ref={containerRef}>
       {/* Hero Section */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-secondary relative overflow-hidden">
+        {/* Animated Background Elements */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.1 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 pointer-events-none"
+        >
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ 
+              rotate: 360,
+              scale: [1, 1.2, 1]
+            }}
+            transition={{ 
+              rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+              scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="absolute top-10 right-10 w-64 h-64 opacity-30"
+          >
+            <TrendingUp className="w-full h-full text-primary" />
+          </motion.div>
+          <motion.div
+            animate={{ 
+              rotate: -360,
+              y: [0, 50, 0]
+            }}
+            transition={{ 
+              rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+              y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="absolute bottom-20 left-10 w-48 h-48 opacity-20"
+          >
+            <Package className="w-full h-full text-primary" />
+          </motion.div>
+        </motion.div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">About Royce Logistics</h1>
+            <motion.h1 
+              className="text-5xl md:text-6xl font-bold mb-6"
+              animate={{ 
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+              }}
+              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+              style={{
+                backgroundImage: "linear-gradient(90deg, hsl(var(--foreground)), hsl(var(--primary)), hsl(var(--foreground)))",
+                backgroundSize: "200% auto",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent"
+              }}
+            >
+              About Royce Logistics
+            </motion.h1>
             <p className="text-xl text-muted-foreground">
               Building bridges between businesses through reliable transportation and logistics services since 2008
             </p>
@@ -50,14 +110,18 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -30, rotateY: -15 }}
+              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              style={{ y: backgroundY, scale }}
+              whileHover={{ scale: 1.05, rotateY: 5 }}
             >
-              <img
+              <motion.img
                 src={warehouse}
                 alt="Royce Logistics warehouse facility"
                 className="rounded-lg shadow-large"
+                whileHover={{ boxShadow: "0 20px 60px hsl(var(--primary) / 0.3)" }}
               />
             </motion.div>
 
@@ -65,8 +129,15 @@ const About = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h2 className="text-4xl font-bold mb-6">Our Story</h2>
+              <motion.h2 
+                className="text-4xl font-bold mb-6"
+                whileInView={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 0.6 }}
+              >
+                Our Story
+              </motion.h2>
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p>
                   Founded in 2008, Royce Logistics began with a simple mission: to provide
@@ -91,8 +162,30 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-secondary relative overflow-hidden">
+        {/* Animated Shield Background */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.05 }}
+          viewport={{ once: true }}
+          className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        >
+          <motion.div
+            animate={{ 
+              scale: [1, 1.1, 1],
+              rotate: [0, 5, -5, 0]
+            }}
+            transition={{ 
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <Shield className="w-96 h-96 text-primary" />
+          </motion.div>
+        </motion.div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -111,16 +204,32 @@ const About = () => {
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 50, rotateX: -20 }}
+                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ 
+                    delay: index * 0.15,
+                    duration: 0.6,
+                    ease: "easeOut"
+                  }}
+                  whileHover={{ 
+                    y: -10,
+                    rotateY: 5,
+                    transition: { duration: 0.3 }
+                  }}
                 >
                   <Card className="h-full hover:shadow-large transition-smooth">
                     <CardContent className="p-6 text-center">
-                      <div className="bg-accent rounded-full p-4 w-fit mx-auto mb-4">
+                      <motion.div 
+                        className="bg-accent rounded-full p-4 w-fit mx-auto mb-4"
+                        whileHover={{ 
+                          scale: 1.2,
+                          rotate: 360,
+                          transition: { duration: 0.6 }
+                        }}
+                      >
                         <Icon className="w-8 h-8 text-accent-foreground" />
-                      </div>
+                      </motion.div>
                       <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
                       <p className="text-muted-foreground">{value.description}</p>
                     </CardContent>
@@ -146,13 +255,26 @@ const About = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20, scale: 0.5 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              transition={{ delay: 0.1, duration: 0.6, ease: "easeOut" }}
+              whileHover={{ scale: 1.1, y: -5 }}
               className="text-center"
             >
-              <div className="text-5xl font-bold text-primary mb-2">15+</div>
+              <motion.div 
+                className="text-5xl font-bold text-primary mb-2"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                15+
+              </motion.div>
               <h3 className="text-xl font-semibold mb-2">Years of Experience</h3>
               <p className="text-muted-foreground">
                 Over a decade of proven expertise in logistics and transportation
@@ -160,13 +282,27 @@ const About = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20, scale: 0.5 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+              whileHover={{ scale: 1.1, y: -5 }}
               className="text-center"
             >
-              <div className="text-5xl font-bold text-primary mb-2">99%</div>
+              <motion.div 
+                className="text-5xl font-bold text-primary mb-2"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+              >
+                99%
+              </motion.div>
               <h3 className="text-xl font-semibold mb-2">On-Time Delivery</h3>
               <p className="text-muted-foreground">
                 Consistently meeting delivery schedules with precision timing
@@ -174,13 +310,27 @@ const About = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20, scale: 0.5 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
+              whileHover={{ scale: 1.1, y: -5 }}
               className="text-center"
             >
-              <div className="text-5xl font-bold text-primary mb-2">24/7</div>
+              <motion.div 
+                className="text-5xl font-bold text-primary mb-2"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+              >
+                24/7
+              </motion.div>
               <h3 className="text-xl font-semibold mb-2">Customer Support</h3>
               <p className="text-muted-foreground">
                 Round-the-clock support for all your logistics needs
