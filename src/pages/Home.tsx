@@ -226,64 +226,132 @@ const Home = () => {
         </motion.div>
       </div>
 
-      {/* Coverage Map Section */}
+      {/* Partners Section */}
       <section className="py-20 bg-secondary relative overflow-hidden">
-        {/* Animated Delivery Icons */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 0.25 }}
           viewport={{ once: true }}
           className="absolute inset-0 pointer-events-none"
         >
-          <Route className="absolute top-10 left-1/4 w-40 h-40 text-primary animate-float" />
-          <Truck className="absolute bottom-20 right-1/4 w-48 h-48 text-primary animate-float" style={{ animationDelay: "1.5s" }} />
-          <MapPin className="absolute top-1/3 right-10 w-32 h-32 text-primary animate-float" style={{ animationDelay: "0.5s" }} />
+          <Package className="absolute top-10 left-10 w-32 h-32 text-primary animate-float" />
+          <Box className="absolute bottom-20 right-20 w-40 h-40 text-primary animate-float" style={{ animationDelay: "1s" }} />
         </motion.div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl font-bold mb-6">
-                Coverage Across
-                <br />
-                <span className="text-primary">The United States</span>
-              </h2>
-              <p className="text-lg text-muted-foreground mb-6">
-                Our extensive network covers all major routes throughout the United States,
-                ensuring your cargo reaches its destination efficiently and safely.
-              </p>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <span>Nationwide coverage across all 50 states</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <span>Major interstate routes and regional connections</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <span>Strategic hubs across the country</span>
-                </li>
-              </ul>
-            </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Partners</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Trusted by leading companies in the logistics industry
+            </p>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <img
-                src={mapUzbekistan}
-                alt="Coverage map of the United States"
-                className="rounded-lg shadow-large animate-float"
-              />
-            </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {[
+              { name: "Amazon", description: "Global e-commerce and logistics leader" },
+              { name: "Street Loads", description: "Premium freight and cargo services" }
+            ].map((partner, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                whileHover={{ scale: 1.05, rotateY: 5 }}
+              >
+                <Card className="h-full hover:shadow-large transition-smooth">
+                  <CardContent className="p-8 text-center">
+                    <motion.div
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }}
+                      className="bg-accent rounded-full p-6 w-fit mx-auto mb-4"
+                    >
+                      <Truck className="w-12 h-12 text-accent-foreground" />
+                    </motion.div>
+                    <h3 className="text-2xl font-bold mb-2">{partner.name}</h3>
+                    <p className="text-muted-foreground">{partner.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Drivers Feedback Section */}
+      <section className="py-20 relative overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.2 }}
+          viewport={{ once: true }}
+          className="absolute inset-0 pointer-events-none"
+        >
+          <Users className="absolute top-10 right-10 w-48 h-48 text-primary animate-float" />
+          <Truck className="absolute bottom-10 left-10 w-40 h-40 text-primary animate-float" style={{ animationDelay: "1s" }} />
+        </motion.div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Driver Feedback</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Hear what our professional drivers have to say about working with us
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "John Martinez",
+                role: "Long-Haul Driver",
+                feedback: "Best company I've worked for. Great support, excellent equipment, and fair compensation. The team treats drivers with respect."
+              },
+              {
+                name: "Sarah Johnson",
+                role: "Regional Driver",
+                feedback: "Royce Logistics provides consistent routes and always ensures our trucks are well-maintained. The dispatch team is professional and responsive."
+              },
+              {
+                name: "Mike Thompson",
+                role: "Owner Operator",
+                feedback: "Working with Royce has been a game-changer for my business. Great rates, timely payments, and plenty of work opportunities."
+              }
+            ].map((driver, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                whileHover={{ y: -10, scale: 1.02 }}
+              >
+                <Card className="h-full hover:shadow-large transition-smooth">
+                  <CardContent className="p-6">
+                    <motion.div
+                      animate={{ rotate: [0, 5, -5, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: index * 0.7 }}
+                      className="bg-accent rounded-full p-4 w-fit mb-4"
+                    >
+                      <Users className="w-8 h-8 text-accent-foreground" />
+                    </motion.div>
+                    <p className="text-muted-foreground mb-4 italic">"{driver.feedback}"</p>
+                    <div className="border-t pt-4">
+                      <p className="font-semibold">{driver.name}</p>
+                      <p className="text-sm text-muted-foreground">{driver.role}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

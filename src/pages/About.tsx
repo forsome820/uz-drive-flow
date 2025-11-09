@@ -109,21 +109,13 @@ const About = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30, rotateY: -15 }}
-              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              style={{ y: backgroundY, scale }}
-              whileHover={{ scale: 1.05, rotateY: 5 }}
-            >
-              <motion.img
+            <div>
+              <img
                 src={warehouse}
                 alt="Royce Logistics warehouse facility"
                 className="rounded-lg shadow-large"
-                whileHover={{ boxShadow: "0 20px 60px hsl(var(--primary) / 0.3)" }}
               />
-            </motion.div>
+            </div>
 
             <motion.div
               initial={{ opacity: 0, x: 30 }}
