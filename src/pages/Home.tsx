@@ -20,23 +20,18 @@ const Home = () => {
   const services = [
     {
       icon: Package,
-      title: "Cargo Transportation",
-      description: "Reliable delivery of goods across the United States with our modern fleet.",
+      title: "Dry Van Freight",
+      description: "Consistent, high-quality loads across top U.S. routes.",
     },
     {
       icon: Clock,
-      title: "Express Delivery",
-      description: "Time-sensitive shipments delivered on schedule with real-time tracking.",
+      title: "Partial Loads",
+      description: "Flexible options designed to maximize your earnings per mile.",
     },
     {
       icon: Shield,
-      title: "Secure Storage",
-      description: "Safe warehousing facilities with 24/7 security and climate control.",
-    },
-    {
-      icon: TrendingUp,
-      title: "Fleet Management",
-      description: "Professional fleet management services for businesses of all sizes.",
+      title: "Drop and Hook",
+      description: "Fast, efficient turnarounds to keep your wheels moving and your profits growing.",
     },
   ];
 
@@ -179,7 +174,7 @@ const Home = () => {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive logistics solutions tailored to your business needs
+              Join a premium fleet built on reliability, respect, and results.
             </p>
           </motion.div>
 

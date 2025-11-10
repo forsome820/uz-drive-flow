@@ -8,39 +8,21 @@ const Services = () => {
   const services = [
     {
       icon: Truck,
-      title: "Full Truckload (FTL)",
-      description: "Dedicated trucks for your large shipments with direct delivery from origin to destination.",
+      title: "Dry Van Freight",
+      description: "Consistent, high-quality loads across top U.S. routes.",
       features: ["Point-to-point delivery", "Full truck capacity", "Faster transit times", "Reduced handling"],
     },
     {
       icon: Package,
-      title: "Less Than Truckload (LTL)",
-      description: "Cost-effective shipping for smaller loads that don't require a full truck.",
+      title: "Partial Loads",
+      description: "Flexible options designed to maximize your earnings per mile.",
       features: ["Shared truck space", "Cost savings", "Flexible scheduling", "Consolidated shipping"],
     },
     {
       icon: Warehouse,
-      title: "Warehousing Solutions",
-      description: "Secure storage facilities with modern inventory management systems.",
+      title: "Drop and Hook",
+      description: "Fast, efficient turnarounds to keep your wheels moving and your profits growing.",
       features: ["Climate-controlled storage", "24/7 security", "Inventory tracking", "Pick and pack services"],
-    },
-    {
-      icon: Clock,
-      title: "Express Delivery",
-      description: "Time-critical shipments delivered with guaranteed arrival times.",
-      features: ["Same-day delivery", "Real-time tracking", "Priority handling", "Door-to-door service"],
-    },
-    {
-      icon: Shield,
-      title: "Cargo Insurance",
-      description: "Comprehensive insurance coverage for your valuable shipments.",
-      features: ["Full value protection", "Claims assistance", "Risk assessment", "Peace of mind"],
-    },
-    {
-      icon: BarChart3,
-      title: "Fleet Management",
-      description: "Professional fleet management services for businesses with transport needs.",
-      features: ["Route optimization", "Fuel management", "Vehicle maintenance", "Driver scheduling"],
     },
   ];
 
@@ -79,7 +61,7 @@ const Services = () => {
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Services</h1>
             <p className="text-xl text-muted-foreground">
-              Comprehensive logistics solutions designed to meet your unique business needs
+                Join a premium fleet built on reliability, respect, and results.
             </p>
           </motion.div>
         </div>
@@ -130,71 +112,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl font-bold mb-4">How It Works</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Simple and streamlined process from quote to delivery
-            </p>
-          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ 
-                    delay: index * 0.15,
-                    duration: 0.5,
-                    ease: "easeOut"
-                  }}
-                  whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                  className="relative"
-                >
-                  <div className="text-center">
-                    <motion.div 
-                      className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary-foreground mx-auto mb-4 shadow-medium"
-                      whileHover={{ 
-                        scale: 1.2,
-                        rotate: 360,
-                        transition: { duration: 0.6 }
-                      }}
-                      animate={{
-                        boxShadow: [
-                          "0 4px 20px hsl(var(--primary) / 0.12)",
-                          "0 8px 30px hsl(var(--primary) / 0.25)",
-                          "0 4px 20px hsl(var(--primary) / 0.12)"
-                        ]
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: index * 0.3
-                      }}
-                    >
-                      {item.step}
-                    </motion.div>
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
-                </div>
-                {index < process.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-border" />
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Additional Features */}
       <section className="py-20">
@@ -250,9 +168,9 @@ const Services = () => {
               >
                 <Headphones className="w-8 h-8 text-accent-foreground" />
               </motion.div>
-              <h3 className="text-xl font-semibold mb-2">24/7 Support</h3>
+              <h3 className="text-xl font-semibold mb-2">24/7 Fleet Support</h3>
               <p className="text-muted-foreground">
-                Our customer service team is always available to assist you
+                Whatever you need, whenever you need it — our team’s always a call away.
               </p>
             </motion.div>
 
@@ -279,9 +197,9 @@ const Services = () => {
               >
                 <Shield className="w-8 h-8 text-accent-foreground" />
               </motion.div>
-              <h3 className="text-xl font-semibold mb-2">Secure & Insured</h3>
+              <h3 className="text-xl font-semibold mb-2">24/7 ELD Support</h3>
               <p className="text-muted-foreground">
-                All shipments are fully insured and handled with maximum security
+                Stay compliant and connected with round-the-clock ELD assistance.
               </p>
             </motion.div>
           </div>
