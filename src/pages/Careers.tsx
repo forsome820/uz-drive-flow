@@ -21,11 +21,13 @@ const Careers = () => {
       icon: TrendingUp,
       title: "On-Time Payments",
       description: "We pay every Friday night, right on schedule — no delays, no excuses.",
+      features: ["Pilot, Flying J, One9 through Pilot network", "Love's, TA through Fleetsmart", "Permits & documentation"],
     },
     {
       icon: Briefcase,
       title: "Equipment & Maintenance",
       description: "Your truck is your business — and we help you keep it running strong. From maintenance support to equipment assistance.",
+      features: ["Pilot, Flying J, One9 through Pilot network", "Love's, TA through Fleetsmart", "Permits & documentation"],
     },
     {
       icon: Users,
