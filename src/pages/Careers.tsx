@@ -124,7 +124,7 @@ const Careers = () => {
                       <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
                       <p className="text-muted-foreground">{benefit.description}</p>
                       <ul className="space-y-2">
-                        {service.features.map((feature, i) => (
+                        {benefit.features.map((feature, i) => (
                           <li key={i} className="flex items-start gap-2 text-sm">
                             <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                             <span>{feature}</span>
