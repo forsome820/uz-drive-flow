@@ -13,23 +13,25 @@ const Careers = () => {
   const benefits = [
     {
       icon: Heart,
-      title: "Health Benefits",
-      description: "Comprehensive health insurance for you and your family",
+      title: "100% off fuel cards",
+      description: "Save big on every trip and enjoy the best fuel access nationwide..",
+      features: ["Pilot, Flying J, One9 through Pilot network", "Love's, TA through Fleetsmart", "Permits & documentation"],
     },
     {
       icon: TrendingUp,
-      title: "Career Growth",
-      description: "Training programs and advancement opportunities",
+      title: "On-Time Payments",
+      description: "We pay every Friday night, right on schedule — no delays, no excuses.",
     },
     {
       icon: Briefcase,
-      title: "Competitive Salary",
-      description: "Industry-leading compensation packages",
+      title: "Equipment & Maintenance",
+      description: "Your truck is your business — and we help you keep it running strong. From maintenance support to equipment assistance.",
     },
     {
       icon: Users,
-      title: "Great Team",
-      description: "Work with professional and supportive colleagues",
+      title: "Safety & Compliance Support",
+      description: "Driver safety and legal compliance are our top priorities. We assist with:",
+      features: ["Registrations", "Highway & IFTA tax filings", "Permits & documentation"],
     },
   ];
 
@@ -56,7 +58,7 @@ const Careers = () => {
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Join Our Team</h1>
             <p className="text-xl text-muted-foreground">
-              Build your career with one of America's leading logistics companies
+              At Royce Logistics, we treat our drivers like partners — because you are the heart of everything we do. Our mission is to provide the best support, benefits, and opportunities on the road, so you can drive with confidence and grow your business with peace of mind.
             </p>
           </motion.div>
         </div>
