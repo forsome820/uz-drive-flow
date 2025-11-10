@@ -72,6 +72,38 @@ const Footer = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <h4 className="font-semibold mb-4">Services</h4>
+            <ul className="space-y-2">
+              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
+                <Link to="/services" className="text-sm text-muted-foreground hover:text-primary transition-smooth">
+                  Cargo Transportation
+                </Link>
+              </motion.li>
+              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
+                <Link to="/services" className="text-sm text-muted-foreground hover:text-primary transition-smooth">
+                  Warehousing
+                </Link>
+              </motion.li>
+              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
+                <Link to="/services" className="text-sm text-muted-foreground hover:text-primary transition-smooth">
+                  Fleet Management
+                </Link>
+              </motion.li>
+              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
+                <Link to="/services" className="text-sm text-muted-foreground hover:text-primary transition-smooth">
+                  Express Delivery
+                </Link>
+              </motion.li>
+            </ul>
+          </motion.div>
+
+          {/* Services */}
+          {/* <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h4 className="font-semibold mb-4">Services</h4>
@@ -89,7 +121,7 @@ const Footer = () => {
                 Express Delivery
               </motion.li>
             </ul>
-          </motion.div>
+          </motion.div> */}
 
           {/* Contact */}
           <motion.div
