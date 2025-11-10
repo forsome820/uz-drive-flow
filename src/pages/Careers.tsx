@@ -14,22 +14,28 @@ const Careers = () => {
 
   const services = [
     {
-      icon: Truck,
-      title: "Dry Van Freight",
-      description: "Consistent, high-quality loads across top U.S. routes.",
-      features: ["Point-to-point delivery", "Full truck capacity", "Faster transit times", "Reduced handling"],
+      icon: Heart,
+      title: "100% off fuel cards",
+      description: "Save big on every trip and enjoy the best fuel access nationwide..",
+      features: ["Pilot, Flying J, One9 through Pilot network", "Love's, TA through Fleetsmart", "Permits & documentation"],
     },
     {
-      icon: Package,
-      title: "Partial Loads",
-      description: "Flexible options designed to maximize your earnings per mile.",
-      features: ["Shared truck space", "Cost savings", "Flexible scheduling", "Consolidated shipping"],
+      icon: TrendingUp,
+      title: "On-Time Payments",
+      description: "We pay every Friday night, right on schedule — no delays, no excuses.",
+      features: ["Pilot, Flying J, One9 through Pilot network", "Love's, TA through Fleetsmart", "Permits & documentation"],
     },
     {
-      icon: Warehouse,
-      title: "Drop and Hook",
-      description: "Fast, efficient turnarounds to keep your wheels moving and your profits growing.",
-      features: ["Climate-controlled storage", "24/7 security", "Inventory tracking", "Pick and pack services"],
+      icon: Briefcase,
+      title: "Equipment & Maintenance",
+      description: "Your truck is your business — and we help you keep it running strong. From maintenance support to equipment assistance.",
+      features: ["Pilot, Flying J, One9 through Pilot network", "Love's, TA through Fleetsmart", "Permits & documentation"],
+    },
+    {
+      icon: Users,
+      title: "Safety & Compliance Support",
+      description: "Driver safety and legal compliance are our top priorities. We assist with:",
+      features: ["Registrations", "Highway & IFTA tax filings", "Permits & documentation"],
     },
   ];
 
@@ -178,7 +184,7 @@ const Careers = () => {
               Join a team that values your contribution and invests in your future
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => {
               const Icon = service.icon;
