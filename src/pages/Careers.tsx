@@ -10,6 +10,27 @@ import { useToast } from "@/hooks/use-toast";
 const Careers = () => {
   const { toast } = useToast();
 
+  const services = [
+    {
+      icon: Truck,
+      title: "Dry Van Freight",
+      description: "Consistent, high-quality loads across top U.S. routes.",
+      features: ["Point-to-point delivery", "Full truck capacity", "Faster transit times", "Reduced handling"],
+    },
+    {
+      icon: Package,
+      title: "Partial Loads",
+      description: "Flexible options designed to maximize your earnings per mile.",
+      features: ["Shared truck space", "Cost savings", "Flexible scheduling", "Consolidated shipping"],
+    },
+    {
+      icon: Warehouse,
+      title: "Drop and Hook",
+      description: "Fast, efficient turnarounds to keep your wheels moving and your profits growing.",
+      features: ["Climate-controlled storage", "24/7 security", "Inventory tracking", "Pick and pack services"],
+    },
+  ];
+
   const benefits = [
     {
       icon: Heart,
