@@ -12,33 +12,6 @@ import { Link } from "react-router-dom";
 const Careers = () => {
   const { toast } = useToast();
 
-  const services = [
-    {
-      icon: Heart,
-      title: "100% off fuel cards",
-      description: "Save big on every trip and enjoy the best fuel access nationwide..",
-      features: ["Pilot, Flying J, One9 through Pilot network", "Love's, TA through Fleetsmart", "Permits & documentation"],
-    },
-    {
-      icon: TrendingUp,
-      title: "On-Time Payments",
-      description: "We pay every Friday night, right on schedule — no delays, no excuses.",
-      features: ["Pilot, Flying J, One9 through Pilot network", "Love's, TA through Fleetsmart", "Permits & documentation"],
-    },
-    {
-      icon: Briefcase,
-      title: "Equipment & Maintenance",
-      description: "Your truck is your business — and we help you keep it running strong. From maintenance support to equipment assistance.",
-      features: ["Pilot, Flying J, One9 through Pilot network", "Love's, TA through Fleetsmart", "Permits & documentation"],
-    },
-    {
-      icon: Users,
-      title: "Safety & Compliance Support",
-      description: "Driver safety and legal compliance are our top priorities. We assist with:",
-      features: ["Registrations", "Highway & IFTA tax filings", "Permits & documentation"],
-    },
-  ];
-
   const benefits = [
     {
       icon: Heart,
@@ -95,81 +68,7 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* Why Work With Us */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl font-bold mb-4">Why Work With Us?</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Join a team that values your contribution and invests in your future
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((benefit, index) => {
-              const Icon = benefit.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30, scale: 0.8 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ 
-                    delay: index * 0.15,
-                    duration: 0.6,
-                    type: "spring",
-                    stiffness: 100
-                  }}
-                  whileHover={{ 
-                    y: -15, 
-                    scale: 1.05,
-                    transition: { duration: 0.3 }
-                  }}
-                >
-                  <Card className="h-full hover:shadow-large transition-smooth">
-                    <CardContent className="p-6 text-center">
-                      <motion.div 
-                        className="bg-accent rounded-full p-4 w-fit mx-auto mb-4"
-                        whileHover={{ 
-                          scale: 1.3,
-                          rotate: [0, 360],
-                          transition: { duration: 0.6 }
-                        }}
-                        animate={{
-                          y: [0, -8, 0],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                          delay: index * 0.4
-                        }}
-                      >
-                        <Icon className="w-8 h-8 text-accent-foreground" />
-                      </motion.div>
-                      <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-                      <p className="text-muted-foreground">{benefit.description}</p>
-                      <ul className="space-y-2">
-                        {benefit.features.map((feature, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm">
-                            <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      
 
        <section className="py-20">
         <div className="container mx-auto px-4">
@@ -186,8 +85,8 @@ const Careers = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
-              const Icon = service.icon;
+            {benefits.map((benefit, index) => {
+              const Icon = benefit.icon;
               return (
                 <motion.div
                   key={index}
@@ -208,10 +107,10 @@ const Careers = () => {
                       >
                         <Icon className="w-8 h-8 text-accent-foreground" />
                       </motion.div>
-                      <h3 className="text-2xl font-semibold mb-3">{service.title}</h3>
-                      <p className="text-muted-foreground mb-4">{service.description}</p>
+                      <h3 className="text-2xl font-semibold mb-3">{benefit.title}</h3>
+                      <p className="text-muted-foreground mb-4">{benefit.description}</p>
                       <ul className="space-y-2">
-                        {service.features.map((feature, i) => (
+                        {benefit.features.map((feature, i) => (
                           <li key={i} className="flex items-start gap-2 text-sm">
                             <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                             <span>{feature}</span>
