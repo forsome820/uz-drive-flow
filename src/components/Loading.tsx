@@ -105,7 +105,7 @@ const Loading = () => {
 
             {/* Truck Cabin */}
             <motion.path
-              d="M 70 35 L 70 55 L 95 55 L 95 45 L 85 35 Z"
+              d="M 68 28 L 68 60 L 98 60 L 98 47 L 85 28 Z"
               fill="#3C020B"
               animate={{
                 fill: ["#3C020B", "#5C021B", "#3C020B"],
