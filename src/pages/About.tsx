@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Target, Eye, Award, Users, TrendingUp, Package, Shield } from "lucide-react";
+import { Target, Eye, Award, Users, TrendingUp, Package, Shield, Box, Truck } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import warehouse from "@/assets/warehouse.jpg";
 import { useRef } from "react";
@@ -44,7 +44,7 @@ const About = () => {
         {/* Animated Background Elements */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.1 }}
+          animate={{ opacity: 0.4 }}
           transition={{ duration: 1 }}
           className="absolute inset-0 pointer-events-none"
         >
@@ -57,7 +57,7 @@ const About = () => {
               rotate: { duration: 20, repeat: Infinity, ease: "linear" },
               scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
             }}
-            className="absolute top-10 right-10 w-64 h-64 opacity-30"
+            className="absolute top-10 right-10 w-64 h-64 opacity-50"
           >
             <TrendingUp className="w-full h-full text-primary" />
           </motion.div>
@@ -70,7 +70,7 @@ const About = () => {
               rotate: { duration: 25, repeat: Infinity, ease: "linear" },
               y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
             }}
-            className="absolute bottom-20 left-10 w-48 h-48 opacity-20"
+            className="absolute bottom-20 left-10 w-48 h-48 opacity-50"
           >
             <Package className="w-full h-full text-primary" />
           </motion.div>
@@ -118,6 +118,16 @@ const About = () => {
             </div>
 
             <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.25 }}
+          viewport={{ once: true }}
+          className="absolute inset-0 pointer-events-none"
+        >
+              <Package className="absolute top-10 left-10 w-32 h-32 text-primary animate-float" />
+
+            </motion.div>
+
+            <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -126,7 +136,7 @@ const About = () => {
               <motion.h2 
                 className="text-4xl font-bold mb-6"
                 whileInView={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 3 }}
               >
                 Our Story
               </motion.h2>
@@ -158,7 +168,7 @@ const About = () => {
         {/* Animated Shield Background */}
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.05 }}
+          whileInView={{ opacity: 0.3 }}
           viewport={{ once: true }}
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
         >
@@ -168,7 +178,7 @@ const About = () => {
               rotate: [0, 5, -5, 0]
             }}
             transition={{ 
-              duration: 8,
+              duration: 3,
               repeat: Infinity,
               ease: "easeInOut"
             }}
@@ -184,7 +194,7 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Values</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Values</h2> 
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               The principles that guide everything we do
             </p>

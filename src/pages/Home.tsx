@@ -127,10 +127,10 @@ const Home = () => {
       </section>
 
       {/* Animated Truck Divider */}
-      <div className="relative h-32 bg-secondary overflow-hidden">
+      <div className="relative h-40 bg-secondary overflow-hidden">
         <motion.div
           style={{ x: truckX }}
-          className="absolute top-1/2 -translate-y-1/2"
+          className="absolute top-1/3 -translate-y-1"
         >
           <Truck className="w-24 h-24 text-primary" />
         </motion.div>

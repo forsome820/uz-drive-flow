@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Users, Briefcase, Heart, TrendingUp, Upload } from "lucide-react";
+import { PersonStanding, SearchCheck, Users, Briefcase, Heart, TrendingUp, Upload } from "lucide-react";
 import { Truck, Package, Warehouse, BarChart3, Clock, Shield, MapPin, Headphones } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -53,8 +53,41 @@ const Careers = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 relative bg-secondary">
         <div className="container mx-auto px-4">
+          <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 pointer-events-none"
+        >
+          <motion.div
+            animate={{ 
+              rotate: 360,
+              scale: [1, 1.2, 1]
+            }}
+            transition={{ 
+              rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+              scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="absolute top-10 right-10 w-48 h-48 opacity-50"
+          >
+            <SearchCheck className="w-full h-full text-primary" />
+          </motion.div>
+          <motion.div
+            animate={{ 
+              rotate: -360,
+              y: [0, 50, 0]
+            }}
+            transition={{ 
+              rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+              y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="absolute bottom-20 left-10 w-48 h-48 opacity-50"
+          >
+            <PersonStanding className="w-full h-full text-primary" />
+          </motion.div>
+        </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

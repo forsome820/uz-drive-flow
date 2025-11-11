@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Truck, Package, Warehouse, BarChart3, Clock, Shield, MapPin, Headphones } from "lucide-react";
+import { CircleUser, TrendingUp, Truck, Package, Warehouse, BarChart3, Clock, Shield, MapPin, Headphones } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -54,6 +54,32 @@ const Services = () => {
       {/* Hero Section */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4">
+          <motion.div
+            animate={{ 
+              rotate: 360,
+              scale: [1, 1.2, 1]
+            }}
+            transition={{ 
+              rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+              scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="absolute top-50 right-40 w-40 h-40 opacity-50"
+          >
+            <Package className="w-full h-full text-primary" />
+          </motion.div>
+          <motion.div
+            animate={{ 
+              rotate: 360,
+              scale: [1, 1.2, 1]
+            }}
+            transition={{ 
+              rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+              scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="absolute top-20 left-40 w-40 h-40 opacity-50"
+          >
+            <Warehouse className="w-full h-full text-primary" />
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -207,8 +233,16 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 relative bg-secondary">
         <div className="container mx-auto px-4">
+          <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.2 }}
+          viewport={{ once: true }}
+          className="absolute inset-0 pointer-events-none"
+        >
+          <CircleUser className="absolute top-10 right-20 w-48 h-48 text-primary animate-float" />
+        </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
