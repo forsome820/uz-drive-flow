@@ -8,7 +8,7 @@ export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   const [lastManualChange, setLastManualChange] = useState<number>(0);
 
-  // Avoid hydration mismatch
+  // Avoid hydration mismatch and load manual override
   useEffect(() => {
     setMounted(true);
     // Check if there's a saved manual override timestamp
@@ -16,6 +16,7 @@ export function ThemeToggle() {
     if (savedTimestamp) {
       setLastManualChange(parseInt(savedTimestamp));
     }
+    // No 'else' needed, as 'lastManualChange' is already 0 by default
   }, []);
 
   // Auto theme switching based on time
@@ -67,7 +68,13 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <Button variant="ghost" size="icon" className="transition-smooth">
+      <Button
+        variant="ghost"
+        size="icon"
+        className="transition-smooth"
+        onClick={handleManualToggle} // <-- THE FIX
+        aria-label="Toggle theme" // <-- THE FIX (and good for accessibility)
+      >
         <Sun className="h-5 w-5" />
       </Button>
     );
