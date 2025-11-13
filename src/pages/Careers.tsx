@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { PersonStanding, SearchCheck, Users, Briefcase, Heart, TrendingUp, Upload } from "lucide-react";
+import { PersonStanding, SearchCheck, Users, Briefcase, Heart, TrendingUp, Upload, File as FileIcon, X } from "lucide-react"; // Added FileIcon and X
 import { Truck, Package, Warehouse, BarChart3, Clock, Shield, MapPin, Headphones } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -8,10 +8,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import { useState, useRef, DragEvent } from "react"; // <-- Import hooks and types
 
 const Careers = () => {
   const { toast } = useToast();
+  const [file, setFile] = useState<File | null>(null); // <-- State for the file
+  const fileInputRef = useRef<HTMLInputElement>(null); // <-- Ref for the hidden input
 
+  // ... (benefits and positions arrays are unchanged) ...
   const benefits = [
     {
       icon: Heart,
@@ -50,10 +54,64 @@ const Careers = () => {
     "Other",
   ];
 
+  // --- Start of New File Handler Logic ---
+
+  const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+
+  // Helper function to validate and set the file
+  const processFile = (file: File | undefined) => {
+    if (!file) return;
+
+    if (file.size > MAX_FILE_SIZE) {
+      toast({
+        variant: "destructive",
+        title: "File too large",
+        description: "Please upload a file smaller than 5MB.",
+      });
+      return;
+    }
+
+    setFile(file);
+  };
+
+  // Triggers when a file is selected via the input
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    processFile(e.target.files?.[0]);
+  };
+
+  // Triggers when the user clicks the upload area
+  const handleFileAreaClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  // Triggers when a file is dragged over the area
+  const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+  };
+
+  // Triggers when a file is dropped onto the area
+  const handleDrop = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    processFile(e.dataTransfer.files?.[0]);
+  };
+
+  // Triggers when the user clicks the 'X' to remove a file
+  const handleRemoveFile = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent the click from re-opening the file dialog
+    setFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""; // Clear the input's value
+    }
+  };
+
+  // --- End of New File Handler Logic ---
+
+
   return (
     <div className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="py-20 relative bg-secondary">
+      {/* ... (Hero Section and Why Work With Us sections are unchanged) ... */}
+       {/* Hero Section */}
+       <section className="py-20 relative bg-secondary">
         <div className="container mx-auto px-4">
           <motion.div
           initial={{ opacity: 0 }}
@@ -181,11 +239,21 @@ const Careers = () => {
           >
             <Card>
               <CardContent className="p-8">
-                <form action="https://formsubmit.co/forsome820@gmail.com" method="POST" className="space-y-6">
+                {/* --- FIX 1: Added encType ---
+                  This is required for file uploads to work with FormSubmit.co
+                */}
+                <form
+                  action="https://formsubmit.co/forsome820@gmail.com"
+                  method="POST"
+                  encType="multipart/form-data" // <-- IMPORTANT FIX
+                  className="space-y-6"
+                >
                   <input type="hidden" name="_subject" value="New Job Application from Royce Logistics Website" />
                   <input type="hidden" name="_captcha" value="false" />
                   <input type="hidden" name="_template" value="table" />
                   
+                  {/* ... (Name, Email, Phone, Position, Experience, Message inputs are unchanged) ... */}
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Full Name *</Label>
@@ -258,17 +326,55 @@ const Careers = () => {
                     />
                   </div>
 
+                  {/* --- FIX 2: Functional File Upload Area ---
+                    The entire 'div' is now clickable and handles drag/drop.
+                    It also conditionally shows the selected file name.
+                  */}
                   <div className="space-y-2">
                     <Label>Resume/CV</Label>
-                    <div className="border-2 border-dashed border-border rounded-lg p-8 text-center hover:border-primary transition-smooth cursor-pointer">
-                      <Upload className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
-                      <p className="text-sm text-muted-foreground mb-1">
-                        Click to upload or drag and drop
-                      </p>
-                      <p className="text-xs text-muted-foreground">PDF, DOC, DOCX (max 5MB)</p>
-                      <input type="file" name="attachment" accept=".pdf,.doc,.docx" className="hidden" />
+                    <div
+                      className="border-2 border-dashed border-border rounded-lg p-8 text-center hover:border-primary transition-smooth cursor-pointer"
+                      onClick={handleFileAreaClick}
+                      onDragOver={handleDragOver}
+                      onDrop={handleDrop}
+                    >
+                      {file ? (
+                        // State when a file is selected
+                        <div className="flex flex-col items-center gap-2">
+                          <FileIcon className="w-8 h-8 text-primary" />
+                          <p className="text-sm font-medium">{file.name}</p>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="text-xs text-destructive hover:text-destructive"
+                            onClick={handleRemoveFile}
+                          >
+                            <X className="w-3 h-3 mr-1" />
+                            Remove file
+                          </Button>
+                        </div>
+                      ) : (
+                        // Default state
+                        <div className="flex flex-col items-center">
+                          <Upload className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
+                          <p className="text-sm text-muted-foreground mb-1">
+                            <span className="font-semibold text-primary">Click to upload</span> or drag and drop
+                          </p>
+                          <p className="text-xs text-muted-foreground">PDF, DOC, DOCX (max 5MB)</p>
+                        </div>
+                      )}
+
+                      <input
+                        type="file"
+                        name="attachment" // This name is used by FormSubmit
+                        accept=".pdf,.doc,.docx"
+                        className="hidden"
+                        ref={fileInputRef} // Connect the ref
+                        onChange={handleFileChange} // Connect the change handler
+                      />
                     </div>
                   </div>
+
 
                   <Button type="submit" size="lg" className="w-full">
                     Submit Application
@@ -280,7 +386,7 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* What We Look For */}
+      {/* ... (What We Look For section is unchanged) ... */}
       <section className="py-20">
         <div className="container mx-auto px-4 max-w-4xl">
           <motion.div
