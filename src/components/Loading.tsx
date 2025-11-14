@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import royceLogo from "@/assets/royce-logo-new.png";
+import royceLogo from "@/assets/royce-logo-new-load.png";
 
 const Loading = () => {
   return (
