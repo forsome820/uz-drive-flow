@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import { CircleUser, TrendingUp, Truck, Package, Warehouse, BarChart3, Clock, Shield, MapPin, Headphones } from "lucide-react";
+import { CircleUser, Truck, Package, Warehouse, InspectionPanel, MonitorCog } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+
 
 const Services = () => {
   const services = [
@@ -26,26 +27,36 @@ const Services = () => {
     },
   ];
 
-  const process = [
+  const equipment = [
     {
-      step: "1",
-      title: "Request Quote",
-      description: "Contact us with your shipping requirements and get a competitive quote within 24 hours.",
+      name: "Samsara",
+      description: "AI-Powered Dash Cam",
+      logo: "/src/assets/samara.jpg",
     },
     {
-      step: "2",
-      title: "Schedule Pickup",
-      description: "Choose a convenient pickup time and location. We'll handle all the logistics.",
+      name: "Bestpass",
+      description: "Toll Road Devices",
+      logo: "/src/assets/bestpass.png",
     },
     {
-      step: "3",
-      title: "Track Shipment",
-      description: "Monitor your cargo in real-time with our advanced tracking system.",
+      name: "PrePass",
+      description: "Weight Station Devices",
+      logo: "/src/assets/prepass.png",
     },
     {
-      step: "4",
-      title: "Delivery Confirmation",
-      description: "Receive confirmation upon successful delivery with electronic proof of delivery.",
+      name: "Pilot Flying J",
+      description: "Fuel Discount Accounts",
+      logo: "/src/assets/pilotj.png",
+    },
+    {
+      name: "Green Light ELD",
+      description: "Electronic Logging Device",
+      logo: "/src/assets/greenlight.png",
+    },
+    {
+      name: "Love's Travel Stops",
+      description: "Fuel & Service Network",
+      logo: "/src/assets/loves.png",
     },
   ];
 
@@ -138,111 +149,83 @@ const Services = () => {
         </div>
       </section>
 
+      {/* Equipment Section */}
+      <section className="py-20 relative bg-secondary">
+        <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 0.25 }}
+                  viewport={{ once: true }}
+                  className="absolute inset-0 pointer-events-none"
+                >
+                  <InspectionPanel className="absolute top-10 left-10 w-32 h-32 text-primary animate-float " />
+                  <MonitorCog className="absolute bottom-0 right-20 w-40 h-40 text-primary animate-float z-0" style={{ animationDelay: "1s" }} />
+                </motion.div>
 
+        <div className="container relative mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Equipment</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              We equip our fleet with the latest and most reliable equipment to ensure safety, efficiency, and savings for our drivers.
+            </p>
+          </motion.div>
 
-      {/* Additional Features */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.8 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.1, y: -5 }}
-              className="text-center"
-            >
-              <motion.div 
-                className="bg-accent rounded-full p-6 w-fit mx-auto mb-4"
-                animate={{ 
-                  y: [0, -10, 0],
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                whileHover={{ rotate: 360, transition: { duration: 0.6 } }}
+          <div className="grid grid-cols-1 sm:grid-cols-2 relative lg:grid-cols-3 gap-6">
+            {equipment.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                whileHover={{ y: -8, scale: 1.02 }}
               >
-                <MapPin className="w-8 h-8 text-accent-foreground" />
+                <Card className="h-full hover:shadow-large transition-smooth">
+                  <CardContent className="p-6 flex flex-col items-center text-center ">
+                    <motion.div 
+                      className="w-24 h-24 mb-4 rounded-xl overflow-hidden bg-white flex items-center justify-center p-2 shadow-soft"
+                      whileHover={{ 
+                        scale: 1.1,
+                        rotate: [0, -5, 5, 0],
+                        transition: { duration: 0.4 }
+                      }}
+                    >
+                      <img 
+                        src={item.logo} 
+                        alt={`${item.name} logo`}
+                        className="w-full h-full object-contain"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.parentElement!.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-accent rounded-lg"><span class="text-2xl font-bold text-accent-foreground">${item.name.charAt(0)}</span></div>`;
+                        }}
+                      />
+                    </motion.div>
+                    <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
+                    <p className="text-muted-foreground text-sm">{item.description}</p>
+                  </CardContent>
+                </Card>
               </motion.div>
-              <h3 className="text-xl font-semibold mb-2">Real-Time Tracking</h3>
-              <p className="text-muted-foreground">
-                Monitor your shipments 24/7 with our advanced GPS tracking system
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.8 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              whileHover={{ scale: 1.1, y: -5 }}
-              className="text-center"
-            >
-              <motion.div 
-                className="bg-accent rounded-full p-6 w-fit mx-auto mb-4"
-                animate={{ 
-                  y: [0, -10, 0],
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.5
-                }}
-                whileHover={{ rotate: 360, transition: { duration: 0.6 } }}
-              >
-                <Headphones className="w-8 h-8 text-accent-foreground" />
-              </motion.div>
-              <h3 className="text-xl font-semibold mb-2">24/7 Fleet Support</h3>
-              <p className="text-muted-foreground">
-                Whatever you need, whenever you need it — our team’s always a call away.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.8 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              whileHover={{ scale: 1.1, y: -5 }}
-              className="text-center"
-            >
-              <motion.div 
-                className="bg-accent rounded-full p-6 w-fit mx-auto mb-4"
-                animate={{ 
-                  y: [0, -10, 0],
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-                whileHover={{ rotate: 360, transition: { duration: 0.6 } }}
-              >
-                <Shield className="w-8 h-8 text-accent-foreground" />
-              </motion.div>
-              <h3 className="text-xl font-semibold mb-2">24/7 ELD Support</h3>
-              <p className="text-muted-foreground">
-                Stay compliant and connected with round-the-clock ELD assistance.
-              </p>
-            </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 relative bg-secondary">
+      <section className="py-20 relative">
         <div className="container mx-auto px-4">
           <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.2 }}
-          viewport={{ once: true }}
-          className="absolute inset-0 pointer-events-none"
-        >
-          <CircleUser className="absolute top-10 right-20 w-48 h-48 text-primary animate-float" />
-        </motion.div>
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 0.2 }}
+            viewport={{ once: true }}
+            className="absolute inset-0 pointer-events-none"
+          >
+            <CircleUser className="absolute top-10 right-20 w-48 h-48 text-primary animate-float" />
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

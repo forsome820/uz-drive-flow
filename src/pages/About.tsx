@@ -275,7 +275,7 @@ const About = () => {
                   ease: "easeInOut"
                 }}
               >
-                15+
+                5+
               </motion.div>
               <h3 className="text-xl font-semibold mb-2">Years of Experience</h3>
               <p className="text-muted-foreground">

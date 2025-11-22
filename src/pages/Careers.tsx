@@ -1,26 +1,28 @@
 import { motion } from "framer-motion";
-import { PersonStanding, SearchCheck, Users, Briefcase, Heart, TrendingUp, Upload, File as FileIcon, X } from "lucide-react"; // Added FileIcon and X
-import { Truck, Package, Warehouse, BarChart3, Clock, Shield, MapPin, Headphones } from "lucide-react";
+import { PersonStanding, SearchCheck, Users, Briefcase, Heart, TrendingUp, Upload, File as FileIcon, X } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Link } from "react-router-dom";
-import { useState, useRef, DragEvent } from "react"; // <-- Import hooks and types
+import { useState, useRef, DragEvent } from "react";
+
+// ⚠️ IMPORTANT: Replace these with your actual values
+const TELEGRAM_BOT_TOKEN = "8246219771:AAEk1fMq1tuA5S9ESVaYZBxpELh4nRc5Uz4";
+const TELEGRAM_CHAT_ID = "1511502627";
 
 const Careers = () => {
   const { toast } = useToast();
-  const [file, setFile] = useState<File | null>(null); // <-- State for the file
-  const fileInputRef = useRef<HTMLInputElement>(null); // <-- Ref for the hidden input
+  const [file, setFile] = useState<File | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // ... (benefits and positions arrays are unchanged) ...
   const benefits = [
     {
       icon: Heart,
       title: "100% off fuel cards",
-      description: "Save big on every trip and enjoy the best fuel access nationwide..",
+      description: "Save big on every trip and enjoy the best fuel access nationwide.",
       features: ["Pilot, Flying J, One9 through Pilot network", "Love's, TA through Fleetsmart", "Permits & documentation"],
     },
     {
@@ -32,13 +34,13 @@ const Careers = () => {
     {
       icon: Briefcase,
       title: "Equipment & Maintenance",
-      description: "Your truck is your business — and we help you keep it running strong. From maintenance support to equipment assistance.",
+      description: "Your truck is your business — and we help you keep it running strong.",
       features: ["Pilot, Flying J, One9 through Pilot network", "Love's, TA through Fleetsmart", "Permits & documentation"],
     },
     {
       icon: Users,
       title: "Safety & Compliance Support",
-      description: "Driver safety and legal compliance are our top priorities. We assist with:",
+      description: "Driver safety and legal compliance are our top priorities.",
       features: ["Registrations", "Highway & IFTA tax filings", "Permits & documentation"],
     },
   ];
@@ -54,11 +56,8 @@ const Careers = () => {
     "Other",
   ];
 
-  // --- Start of New File Handler Logic ---
-
   const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 
-  // Helper function to validate and set the file
   const processFile = (file: File | undefined) => {
     if (!file) return;
 
@@ -74,78 +73,151 @@ const Careers = () => {
     setFile(file);
   };
 
-  // Triggers when a file is selected via the input
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     processFile(e.target.files?.[0]);
   };
 
-  // Triggers when the user clicks the upload area
   const handleFileAreaClick = () => {
     fileInputRef.current?.click();
   };
 
-  // Triggers when a file is dragged over the area
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
 
-  // Triggers when a file is dropped onto the area
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     processFile(e.dataTransfer.files?.[0]);
   };
 
-  // Triggers when the user clicks the 'X' to remove a file
   const handleRemoveFile = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent the click from re-opening the file dialog
+    e.stopPropagation();
     setFile(null);
     if (fileInputRef.current) {
-      fileInputRef.current.value = ""; // Clear the input's value
+      fileInputRef.current.value = "";
     }
   };
 
-  // --- End of New File Handler Logic ---
+  const sendToTelegram = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      // Prepare message text
+      const message = `
+🆕 *New Job Application*
+
+👤 *Name:* ${formData.get('name')}
+📧 *Email:* ${formData.get('email')}
+📱 *Phone:* ${formData.get('phone')}
+💼 *Position:* ${formData.get('position')}
+📅 *Experience:* ${formData.get('experience') || 'Not specified'}
+
+📝 *Message:*
+${formData.get('message') || 'No additional information provided'}
+      `.trim();
+
+      // Send text message
+      const textResponse = await fetch(
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: message,
+            parse_mode: "Markdown",
+          }),
+        }
+      );
+
+      if (!textResponse.ok) {
+        throw new Error("Failed to send message to Telegram");
+      }
+
+      // Send file if attached
+      if (file) {
+        const fileFormData = new FormData();
+        fileFormData.append("chat_id", TELEGRAM_CHAT_ID);
+        fileFormData.append("document", file);
+        fileFormData.append("caption", `Resume/CV from ${formData.get('name')}`);
+
+        const fileResponse = await fetch(
+          `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendDocument`,
+          {
+            method: "POST",
+            body: fileFormData,
+          }
+        );
+
+        if (!fileResponse.ok) {
+          throw new Error("Failed to send file to Telegram");
+        }
+      }
+
+      toast({
+        title: "Application Submitted!",
+        description: "We've received your application and will get back to you soon.",
+      });
+
+      // Reset form
+      form.reset();
+      setFile(null);
+    } catch (error) {
+      console.error("Error sending to Telegram:", error);
+      toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: "There was an error submitting your application. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen pt-20">
-      {/* ... (Hero Section and Why Work With Us sections are unchanged) ... */}
-       {/* Hero Section */}
-       <section className="py-20 relative bg-secondary">
+      {/* Hero Section */}
+      <section className="py-20 relative bg-secondary">
         <div className="container mx-auto px-4">
           <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0 pointer-events-none"
-        >
-          <motion.div
-            animate={{ 
-              rotate: 360,
-              scale: [1, 1.2, 1]
-            }}
-            transition={{ 
-              rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-              scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
-            }}
-            className="absolute top-10 right-10 w-48 h-48 opacity-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.4 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 pointer-events-none"
           >
-            <SearchCheck className="w-full h-full text-primary" />
+            <motion.div
+              animate={{ 
+                rotate: 360,
+                scale: [1, 1.2, 1]
+              }}
+              transition={{ 
+                rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+              }}
+              className="absolute top-10 right-10 w-48 h-48 opacity-50"
+            >
+              <SearchCheck className="w-full h-full text-primary" />
+            </motion.div>
+            <motion.div
+              animate={{ 
+                rotate: -360,
+                y: [0, 50, 0]
+              }}
+              transition={{ 
+                rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+              }}
+              className="absolute bottom-20 left-10 w-48 h-48 opacity-50"
+            >
+              <PersonStanding className="w-full h-full text-primary" />
+            </motion.div>
           </motion.div>
-          <motion.div
-            animate={{ 
-              rotate: -360,
-              y: [0, 50, 0]
-            }}
-            transition={{ 
-              rotate: { duration: 25, repeat: Infinity, ease: "linear" },
-              y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
-            }}
-            className="absolute bottom-20 left-10 w-48 h-48 opacity-50"
-          >
-            <PersonStanding className="w-full h-full text-primary" />
-          </motion.div>
-        </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -153,15 +225,13 @@ const Careers = () => {
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Join Our Team</h1>
             <p className="text-xl text-muted-foreground">
-              At Royce Logistics, we treat our drivers like partners — because you are the heart of everything we do. Our mission is to provide the best support, benefits, and opportunities on the road, so you can drive with confidence and grow your business with peace of mind.
+              At Royce Logistics, we treat our drivers like partners — because you are the heart of everything we do.
             </p>
           </motion.div>
         </div>
       </section>
 
-      
-
-       <section className="py-20">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -239,21 +309,7 @@ const Careers = () => {
           >
             <Card>
               <CardContent className="p-8">
-                {/* --- FIX 1: Added encType ---
-                  This is required for file uploads to work with FormSubmit.co
-                */}
-                <form
-                  action="https://formsubmit.co/forsome820@gmail.com"
-                  method="POST"
-                  encType="multipart/form-data" // <-- IMPORTANT FIX
-                  className="space-y-6"
-                >
-                  <input type="hidden" name="_subject" value="New Job Application from Royce Logistics Website" />
-                  <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_template" value="table" />
-                  
-                  {/* ... (Name, Email, Phone, Position, Experience, Message inputs are unchanged) ... */}
-
+                <form onSubmit={sendToTelegram} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Full Name *</Label>
@@ -326,10 +382,6 @@ const Careers = () => {
                     />
                   </div>
 
-                  {/* --- FIX 2: Functional File Upload Area ---
-                    The entire 'div' is now clickable and handles drag/drop.
-                    It also conditionally shows the selected file name.
-                  */}
                   <div className="space-y-2">
                     <Label>Resume/CV</Label>
                     <div
@@ -339,7 +391,6 @@ const Careers = () => {
                       onDrop={handleDrop}
                     >
                       {file ? (
-                        // State when a file is selected
                         <div className="flex flex-col items-center gap-2">
                           <FileIcon className="w-8 h-8 text-primary" />
                           <p className="text-sm font-medium">{file.name}</p>
@@ -354,7 +405,6 @@ const Careers = () => {
                           </Button>
                         </div>
                       ) : (
-                        // Default state
                         <div className="flex flex-col items-center">
                           <Upload className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
                           <p className="text-sm text-muted-foreground mb-1">
@@ -366,18 +416,22 @@ const Careers = () => {
 
                       <input
                         type="file"
-                        name="attachment" // This name is used by FormSubmit
+                        name="attachment"
                         accept=".pdf,.doc,.docx"
                         className="hidden"
-                        ref={fileInputRef} // Connect the ref
-                        onChange={handleFileChange} // Connect the change handler
+                        ref={fileInputRef}
+                        onChange={handleFileChange}
                       />
                     </div>
                   </div>
 
-
-                  <Button type="submit" size="lg" className="w-full">
-                    Submit Application
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Submitting..." : "Submit Application"}
                   </Button>
                 </form>
               </CardContent>
@@ -386,7 +440,7 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* ... (What We Look For section is unchanged) ... */}
+      {/* What We Look For Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 max-w-4xl">
           <motion.div

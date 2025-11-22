@@ -1,13 +1,102 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Package, Clock, Shield, TrendingUp, MapPin, Users, Truck, Box, Route } from "lucide-react";
-import { Briefcase, Heart, Upload } from "lucide-react";
+import { ArrowRight, Package, Clock, Shield, TrendingUp, Users, Truck, Box, ChevronLeft, ChevronRight } from "lucide-react";
+import { Briefcase, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import heroTruck from "@/assets/hero-truck.jpg";
-import mapUzbekistan from "@/assets/map-uzbekistan.jpg";
-import { useRef } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
 import AnimatedStatCard from "@/components/AnimatedStatCard";
+import useEmblaCarousel from "embla-carousel-react";
+
+// Partner logos - replace these URLs with actual logo images
+const partners = [
+  {
+    name: "Amazon",
+    description: "Global e-commerce and logistics leader",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+  },
+  {
+    name: "ARC",
+    description: "Premium freight and cargo services",
+    logo: "/src/assets/arc.png" 
+  },
+  {
+    name: "FedEx",
+    description: "Worldwide shipping and delivery",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/b/b9/FedEx_Corporation_-_2016_Logo.svg"
+  },
+  {
+    name: "UPS",
+    description: "Package delivery and supply chain",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/6/6b/United_Parcel_Service_logo_2014.svg"
+  },
+  {
+    name: "XPO",
+    description: "Global e-commerce and logistics leader",
+    logo: "/src/assets/xpo.png" 
+  },
+  {
+    name: "Hub Group",
+    description: "Premium freight and cargo services",
+    logo: "/src/assets/hub.png" 
+  },
+  {
+    name: "Estes",
+    description: "Worldwide shipping and delivery",
+    logo: "/src/assets/estes.png" 
+  },
+  {
+    name: "JBHunt",
+    description: "Package delivery and supply chain",
+    logo: "/src/assets/jbhunt.png" 
+  },
+  {
+    name: "NFI",
+    description: "Package delivery and supply chain",
+    logo: "/src/assets/nfi.png" 
+  },
+  {
+    name: "Penske",
+    description: "Package delivery and supply chain",
+    logo: "/src/assets/penske.png" 
+  },
+  {
+    name: "Prime",
+    description: "Package delivery and supply chain",
+    logo: "/src/assets/prime.png" 
+  },
+  {
+    name: "Roadrunner",
+    description: "Package delivery and supply chain",
+    logo: "/src/assets/roadrunner.png" 
+  },
+  {
+    name: "Ryder",
+    description: "Package delivery and supply chain",
+    logo: "/src/assets/ryder.png" 
+  },
+  {
+    name: "SCH",
+    description: "Package delivery and supply chain",
+    logo: "/src/assets/sch.png" 
+  },
+  {
+    name: "TFI",
+    description: "Package delivery and supply chain",
+    logo: "/src/assets/tfi.png" 
+  },
+  {
+    name: "Werner",
+    description: "Package delivery and supply chain",
+    logo: "/src/assets/werner.png" 
+  },
+  {
+    name: "YRC",
+    description: "Package delivery and supply chain",
+    logo: "/src/assets/yrc.png" 
+  }
+];
 
 const Home = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,6 +104,48 @@ const Home = () => {
     target: containerRef,
     offset: ["start start", "end end"]
   });
+
+  // Initialize Embla Carousel
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true, 
+    align: "center", 
+    skipSnaps: false,
+    dragFree: false // Changed to false for better snapping to center
+  });
+  
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((index: number) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    
+    onSelect(); // Initial check
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    
+    // Auto-play carousel
+    const autoplay = setInterval(() => {
+      if (emblaApi) emblaApi.scrollNext();
+    }, 4000); 
+    
+    return () => {
+      clearInterval(autoplay);
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi, onSelect]);
 
   const benefits = [
     {
@@ -62,13 +193,6 @@ const Home = () => {
       title: "Drop and Hook",
       description: "Fast, efficient turnarounds to keep your wheels moving and your profits growing.",
     },
-  ];
-
-  const stats = [
-    { value: "500+", label: "Deliveries/Month" },
-    { value: "50+", label: "Fleet Vehicles" },
-    { value: "15+", label: "Years Experience" },
-    { value: "99%", label: "On-Time Delivery" },
   ];
 
   return (
@@ -142,7 +266,6 @@ const Home = () => {
 
       {/* Services Section */}
       <section className="py-20 relative overflow-hidden">
-        {/* Animated Route Lines */}
         <motion.div
           initial={{ pathLength: 0 }}
           whileInView={{ pathLength: 1 }}
@@ -220,7 +343,7 @@ const Home = () => {
         </motion.div>
       </div>
 
-      {/* Partners Section */}
+      {/* Partners Section with Carousel */}
       <section className="py-20 bg-secondary relative overflow-hidden">
         <motion.div
           initial={{ opacity: 0 }}
@@ -245,34 +368,76 @@ const Home = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {[
-              { name: "Amazon", description: "Global e-commerce and logistics leader" },
-              { name: "Street Loads", description: "Premium freight and cargo services" }
-            ].map((partner, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                whileHover={{ scale: 1.05, rotateY: 5 }}
-              >
-                <Card className="h-full hover:shadow-large transition-smooth">
-                  <CardContent className="p-8 text-center">
-                    <motion.div
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }}
-                      className="bg-accent rounded-full p-6 w-fit mx-auto mb-4"
-                    >
-                      <Truck className="w-12 h-12 text-accent-foreground" />
-                    </motion.div>
-                    <h3 className="text-2xl font-bold mb-2">{partner.name}</h3>
-                    <p className="text-muted-foreground">{partner.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          {/* Carousel Container */}
+          <div className="relative max-w-6xl mx-auto">
+            {/* Navigation Buttons - Fixed Positioning for accessibility */}
+            <Button
+              size="icon"
+              type="button"
+              className="absolute -left-2 md:-left-12 top-1/2 -translate-y-1/2 z-20 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background shadow-lg"
+              onClick={scrollPrev}
+              disabled={!canScrollPrev && false} // Can disable if loop is false, but loop is true here
+            >
+              <ChevronLeft className="w-5 h-5 text-muted-foreground" />
+            </Button>
+            
+            <Button
+              size="icon"
+              type="button"
+              className="absolute -right-2 md:-right-12 top-1/2 -translate-y-1/2 z-20 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background shadow-lg"
+              onClick={scrollNext}
+              disabled={!canScrollNext && false}
+            >
+              <ChevronRight className="w-5 h-5 text-muted-foreground" />
+            </Button>
+
+            {/* Embla Carousel */}
+            <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
+              <div className="flex items-center">
+                {partners.map((partner, index) => (
+                  // Use standard div for slide wrapper to ensure Embla functionality
+                  <div
+                    key={index}
+                    className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33%]"
+                  >
+                    {/* Transparent Container - No Card Background */}
+                    <div className="h-40 w-full flex items-center justify-center px-8 select-none"> 
+                      <motion.img 
+                        initial={{ opacity: 1, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.5 }}
+                        src={partner.logo} 
+                        alt={`${partner.name} logo`}
+                        className="w-full h-full object-contain filter opacity-100 transition-all duration-300 transform hover:scale-110 cursor-pointer"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                          e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                        }}
+                      />
+                      <Truck className="w-20 h-20 text-primary/50 hidden mx-auto" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Carousel Dots */}
+            <div className="flex justify-center gap-3 mt-10">
+              {partners.map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => scrollTo(index)}
+                  className={`transition-all duration-300 rounded-full ${
+                    selectedIndex === index 
+                      ? "w-8 h-2 bg-primary" // Active state: wider pill shape
+                      : "w-2 h-2 bg-primary/30 hover:bg-primary/60" // Inactive state: small dot
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -408,7 +573,6 @@ const Home = () => {
 
       {/* CTA Section */}
       <section className="py-20 relative overflow-hidden">
-        {/* Background Animated Elements */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 0.2 }}
@@ -430,7 +594,7 @@ const Home = () => {
             <Users className="w-16 h-16 text-primary-foreground mx-auto mb-6" />
             <h2 className="text-4xl font-bold text-primary-foreground mb-4">Join Our Team</h2>
             <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-              We're always looking for professional drivers and logistics specialists to join our growing team.
+              We're always looking for professional drivers to join our growing team.
             </p>
             <Link to="/careers">
               <Button size="lg" variant="secondary" className="text-lg px-8">

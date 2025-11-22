@@ -1,15 +1,9 @@
 import { motion } from "framer-motion";
-import { Nfc, ContactRound, Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Nfc, ContactRound, Mail, Phone, MapPin, Clock, Instagram, Linkedin, Youtube, Send } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
-  const { toast } = useToast();
-
   const contactInfo = [
     {
       icon: Phone,
@@ -33,44 +27,75 @@ const Contact = () => {
     },
   ];
 
+  const socialMedia = [
+    {
+      icon: Instagram,
+      name: "Instagram",
+      handle: "@roycelogistics",
+      url: "https://instagram.com/roycelogistics",
+      color: "hover:bg-gradient-to-br hover:from-purple-500 hover:via-pink-500 hover:to-orange-400",
+    },
+    {
+      icon: Send,
+      name: "Telegram",
+      handle: "@roycelogistics",
+      url: "https://t.me/roycelogistics",
+      color: "hover:bg-[#0088cc]",
+    },
+    {
+      icon: Linkedin,
+      name: "LinkedIn",
+      handle: "Royce Logistics",
+      url: "https://linkedin.com/company/roycelogistics",
+      color: "hover:bg-[#0077b5]",
+    },
+    {
+      icon: Youtube,
+      name: "YouTube",
+      handle: "Royce Logistics",
+      url: "https://youtube.com/@roycelogistics",
+      color: "hover:bg-[#ff0000]",
+    },
+  ];
+
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="py-20 relative bg-secondary">
         <div className="container mx-auto px-4">
           <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0 pointer-events-none"
-        >
-          <motion.div
-            animate={{ 
-              rotate: 360,
-              scale: [1, 1.2, 1]
-            }}
-            transition={{ 
-              rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-              scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
-            }}
-            className="absolute top-10 right-10 w-48 h-48 opacity-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.4 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 pointer-events-none"
           >
-            <Nfc className="w-full h-full text-primary" />
+            <motion.div
+              animate={{ 
+                rotate: 360,
+                scale: [1, 1.2, 1]
+              }}
+              transition={{ 
+                rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+              }}
+              className="absolute top-10 right-10 w-48 h-48 opacity-50"
+            >
+              <Nfc className="w-full h-full text-primary" />
+            </motion.div>
+            <motion.div
+              animate={{ 
+                rotate: -360,
+                y: [0, 50, 0]
+              }}
+              transition={{ 
+                rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+              }}
+              className="absolute bottom-20 left-10 w-48 h-48 opacity-50"
+            >
+              <ContactRound className="w-full h-full text-primary" />
+            </motion.div>
           </motion.div>
-          <motion.div
-            animate={{ 
-              rotate: -360,
-              y: [0, 50, 0]
-            }}
-            transition={{ 
-              rotate: { duration: 25, repeat: Infinity, ease: "linear" },
-              y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
-            }}
-            className="absolute bottom-20 left-10 w-48 h-48 opacity-50"
-          >
-            <ContactRound className="w-full h-full text-primary" />
-          </motion.div>
-        </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -160,33 +185,72 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Quick Quote Section */}
+      {/* Social Media Section */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
+            className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4">Need a Quick Quote?</h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Call us directly at <a href="tel:+15551234567" className="text-primary font-semibold hover:underline">+1 (555) 123-4567</a> for immediate assistance and competitive quotes
+            <h2 className="text-4xl font-bold mb-4">Connect With Us</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Follow us on social media to stay updated with the latest news, updates, and behind-the-scenes content
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:+15551234567">
-                <Button size="lg" className="gap-2">
-                  <Phone className="w-5 h-5" />
-                  Call Now
-                </Button>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {socialMedia.map((social, index) => {
+              const Icon = social.icon;
+              return (
+                <motion.a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  whileHover={{ y: -10, scale: 1.05 }}
+                  className="block"
+                >
+                  <Card className={`h-full transition-all duration-300 group cursor-pointer hover:shadow-large ${social.color} hover:text-white`}>
+                    <CardContent className="p-6 text-center">
+                      <motion.div 
+                        className="bg-accent group-hover:bg-white/20 rounded-full p-4 w-fit mx-auto mb-4 transition-colors duration-300"
+                        whileHover={{ 
+                          rotate: 360,
+                          transition: { duration: 0.5 }
+                        }}
+                      >
+                        <Icon className="w-8 h-8 text-accent-foreground group-hover:text-white transition-colors duration-300" />
+                      </motion.div>
+                      <h3 className="font-semibold text-lg mb-1 group-hover:text-white transition-colors duration-300">{social.name}</h3>
+                      <p className="text-sm text-muted-foreground group-hover:text-white/80 transition-colors duration-300">
+                        {social.handle}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.a>
+              );
+            })}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="text-center mt-12"
+          >
+            <p className="text-muted-foreground">
+              Have questions? Reach out to us directly at{" "}
+              <a href="mailto:info@roycelogistics.com" className="text-primary font-semibold hover:underline">
+                info@roycelogistics.com
               </a>
-              <a href="mailto:info@roycelogistics.com">
-                <Button size="lg" variant="secondary" className="gap-2">
-                  <Mail className="w-5 h-5" />
-                  Email Us
-                </Button>
-              </a>
-            </div>
+            </p>
           </motion.div>
         </div>
       </section>
