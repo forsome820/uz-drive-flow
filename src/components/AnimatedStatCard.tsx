@@ -46,9 +46,9 @@ const AnimatedCounter = ({ end, suffix = "" }) => {
 
 const StatsSection = () => {
   const stats = [
-    { value: 500, suffix: "+", label: "Deliveries/Month" },
-    { value: 50, suffix: "+", label: "Fleet Vehicles" },
-    { value: 15, suffix: "+", label: "Years Experience" },
+    { value: 4000, suffix: "+", label: "Deliveries/Month" },
+    { value: 400, suffix: "+", label: "Fleet Vehicles" },
+    { value: 5, suffix: "+", label: "Years Experience" },
     { value: 99, suffix: "%", label: "On-Time Delivery" },
   ];
 
