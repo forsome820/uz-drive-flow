@@ -3,6 +3,12 @@ import { CircleUser, Truck, Package, Warehouse, InspectionPanel, MonitorCog } fr
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import samsaraLogo from "@/assets/samara.jpg";
+import bestpassLogo from "@/assets/bestpass.png";
+import prepassLogo from "@/assets/prepass.png";
+import politjLogo from "@/assets/pilotj.png";
+import greenlightLogo from "@/assets/greenlight.png";
+import lovesLogo from "@/assets/loves.png";
 
 
 const Services = () => {
@@ -31,32 +37,32 @@ const Services = () => {
     {
       name: "Samsara",
       description: "AI-Powered Dash Cam",
-      logo: "/src/assets/samara.jpg",
+      logo: samsaraLogo
     },
     {
       name: "Bestpass",
       description: "Toll Road Devices",
-      logo: "/src/assets/bestpass.png",
+      logo: bestpassLogo
     },
     {
       name: "PrePass",
       description: "Weight Station Devices",
-      logo: "/src/assets/prepass.png",
+      logo: prepassLogo
     },
     {
       name: "Pilot Flying J",
       description: "Fuel Discount Accounts",
-      logo: "/src/assets/pilotj.png",
+      logo: politjLogo
     },
     {
       name: "Green Light ELD",
       description: "Electronic Logging Device",
-      logo: "/src/assets/greenlight.png",
+      logo: greenlightLogo
     },
     {
       name: "Love's Travel Stops",
       description: "Fuel & Service Network",
-      logo: "/src/assets/loves.png",
+      logo: lovesLogo
     },
   ];
 

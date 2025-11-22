@@ -8,93 +8,110 @@ import heroTruck from "@/assets/hero-truck.jpg";
 import { useRef, useEffect, useCallback, useState } from "react";
 import AnimatedStatCard from "@/components/AnimatedStatCard";
 import useEmblaCarousel from "embla-carousel-react";
+import arcLogo from "@/assets/arc.png";
+import xpoLogo from "@/assets/xpo.png";
+import hubLogo from "@/assets/hub.png";
+import estesLogo from "@/assets/estes.png";
+import jbhuntLogo from "@/assets/jbhunt.png";
+import nfiLogo from "@/assets/nfi.png";
+import penskeLogo from "@/assets/penske.png";
+import primeLogo from "@/assets/prime.png";
+import roadrunnerLogo from "@/assets/roadrunner.png";
+import ryderLogo from "@/assets/ryder.png";
+import schLogo from "@/assets/sch.png";
+import tfiLogo from "@/assets/tfi.png";
+import wernerLogo from "@/assets/werner.png";
+import yrcLogo from "@/assets/yrc.png";
+import amazonLogo from "@/assets/amazon.png";
+import upsLogo from "@/assets/ups.png";
+import fedexLogo from "@/assets/fedex.png";
 
 // Partner logos - replace these URLs with actual logo images
 const partners = [
   {
     name: "Amazon",
     description: "Global e-commerce and logistics leader",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+    logo: amazonLogo
   },
   {
     name: "ARC",
     description: "Premium freight and cargo services",
-    logo: "/src/assets/arc.png" 
+    logo: arcLogo 
   },
   {
     name: "FedEx",
     description: "Worldwide shipping and delivery",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/b/b9/FedEx_Corporation_-_2016_Logo.svg"
+    logo: fedexLogo
   },
   {
     name: "UPS",
     description: "Package delivery and supply chain",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/6/6b/United_Parcel_Service_logo_2014.svg"
+    logo: upsLogo
   },
   {
     name: "XPO",
     description: "Global e-commerce and logistics leader",
-    logo: "/src/assets/xpo.png" 
+    logo: xpoLogo
   },
   {
     name: "Hub Group",
     description: "Premium freight and cargo services",
-    logo: "/src/assets/hub.png" 
+    logo: hubLogo
   },
   {
     name: "Estes",
     description: "Worldwide shipping and delivery",
-    logo: "/src/assets/estes.png" 
+    logo: estesLogo
   },
   {
     name: "JBHunt",
     description: "Package delivery and supply chain",
-    logo: "/src/assets/jbhunt.png" 
+    logo: jbhuntLogo
   },
   {
     name: "NFI",
     description: "Package delivery and supply chain",
-    logo: "/src/assets/nfi.png" 
+    logo: nfiLogo
   },
   {
     name: "Penske",
     description: "Package delivery and supply chain",
-    logo: "/src/assets/penske.png" 
+    logo: penskeLogo
   },
   {
     name: "Prime",
     description: "Package delivery and supply chain",
-    logo: "/src/assets/prime.png" 
+    logo: primeLogo
   },
   {
     name: "Roadrunner",
     description: "Package delivery and supply chain",
-    logo: "/src/assets/roadrunner.png" 
+    logo: roadrunnerLogo
   },
   {
     name: "Ryder",
     description: "Package delivery and supply chain",
-    logo: "/src/assets/ryder.png" 
+    logo: ryderLogo
   },
   {
     name: "SCH",
     description: "Package delivery and supply chain",
-    logo: "/src/assets/sch.png" 
+    logo: schLogo
   },
   {
     name: "TFI",
     description: "Package delivery and supply chain",
-    logo: "/src/assets/tfi.png" 
+    logo: tfiLogo
   },
   {
     name: "Werner",
     description: "Package delivery and supply chain",
-    logo: "/src/assets/werner.png" 
+    logo: wernerLogo
   },
   {
     name: "YRC",
     description: "Package delivery and supply chain",
-    logo: "/src/assets/yrc.png" 
+    logo: yrcLogo
   }
 ];
 
