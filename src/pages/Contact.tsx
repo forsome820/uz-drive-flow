@@ -8,7 +8,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
+      details: ["+1 409 710 0000"],
     },
     {
       icon: Mail,
@@ -18,12 +18,12 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Address",
-      details: ["United States"],
+      details: ["8401 Claude-Thomas Road, Franklin, OH 45005"],
     },
     {
       icon: Clock,
       title: "Business Hours",
-      details: ["Mon - Fri: 8:00 AM - 6:00 PM", "Sat: 9:00 AM - 2:00 PM"],
+      details: ["Mon - Fri: 9:00 AM - 6:00 PM", "Sat: 9:00 AM - 3:00 PM"],
     },
   ];
 
@@ -45,14 +45,14 @@ const Contact = () => {
     {
       icon: Linkedin,
       name: "LinkedIn",
-      handle: "Royce Logistics",
+      handle: "Royce LLC",
       url: "https://linkedin.com/company/roycelogistics",
       color: "hover:bg-[#0077b5]",
     },
     {
       icon: Youtube,
       name: "YouTube",
-      handle: "Royce Logistics",
+      handle: "Royce LLC",
       url: "https://youtube.com/@roycelogistics",
       color: "hover:bg-[#ff0000]",
     },
@@ -177,7 +177,7 @@ const Contact = () => {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Royce Logistics Location"
+                  title="Royce LLC Location"
                 />
               </CardContent>
             </Card>

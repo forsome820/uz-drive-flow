@@ -26,7 +26,7 @@ const Footer = () => {
                 <Truck className="w-6 h-6 text-primary-foreground" />
               </motion.div>
               <div>
-                <h3 className="font-bold text-lg">Royce Logistics</h3>
+                <h3 className="font-bold text-lg">Royce LLC</h3>
                 <p className="text-xs text-muted-foreground">Driving Forward</p>
               </div>
             </div>
@@ -78,22 +78,17 @@ const Footer = () => {
             <ul className="space-y-2">
               <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
                 <Link to="/services" className="text-sm text-muted-foreground hover:text-primary transition-smooth">
-                  Cargo Transportation
+                  Dry Van Freight
                 </Link>
               </motion.li>
               <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
                 <Link to="/services" className="text-sm text-muted-foreground hover:text-primary transition-smooth">
-                  Warehousing
+                  Partial Loads
                 </Link>
               </motion.li>
               <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
                 <Link to="/services" className="text-sm text-muted-foreground hover:text-primary transition-smooth">
-                  Fleet Management
-                </Link>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                <Link to="/services" className="text-sm text-muted-foreground hover:text-primary transition-smooth">
-                  Express Delivery
+                  Drop and Hook
                 </Link>
               </motion.li>
             </ul>
@@ -138,7 +133,7 @@ const Footer = () => {
                 transition={{ duration: 0.2 }}
               >
                 <Phone className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
-                <span>+1 (555) 123-4567</span>
+                <span>+1 409 710 0000</span>
               </motion.li>
               <motion.li 
                 className="flex items-start gap-2 text-sm text-muted-foreground"
@@ -154,14 +149,14 @@ const Footer = () => {
                 transition={{ duration: 0.2 }}
               >
                 <MapPin className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
-                <span>United States</span>
+                <span>8401 Claude-Thomas Road, Franklin, OH 45005</span>
               </motion.li>
             </ul>
           </motion.div>
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Royce Logistics. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Royce LLC. All rights reserved.</p>
         </div>
       </div>
     </footer>

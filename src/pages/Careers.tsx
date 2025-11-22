@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { PersonStanding, SearchCheck, Users, Briefcase, Heart, TrendingUp, Upload, File as FileIcon, X } from "lucide-react";
+import { PersonStanding, SearchCheck, Users, Briefcase, Heart, TrendingUp, Upload, File as FileIcon, X, ArrowsUpFromLine, ShieldCheck } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,28 +21,40 @@ const Careers = () => {
   const benefits = [
     {
       icon: Heart,
-      title: "100% off fuel cards",
-      description: "Save big on every trip and enjoy the best fuel access nationwide.",
+      title: "Guaranteed 100% fuel discounts for driver.",
+      description: "Save big on every trip and enjoy the best fuel access nationwide..",
       features: ["Pilot, Flying J, One9 through Pilot network", "Love's, TA through Fleetsmart", "Permits & documentation"],
     },
     {
       icon: TrendingUp,
       title: "On-Time Payments",
-      description: "We pay every Friday night, right on schedule — no delays, no excuses.",
-      features: ["Pilot, Flying J, One9 through Pilot network", "Love's, TA through Fleetsmart", "Permits & documentation"],
+      description: (
+        <>
+          We pay every <span className="font-bold text-foreground">week</span> by scheduled day and time, <span className="font-bold text-foreground">no delays, no excuses</span>.
+        </>
+      ),
     },
     {
       icon: Briefcase,
       title: "Equipment & Maintenance",
-      description: "Your truck is your business — and we help you keep it running strong.",
-      features: ["Pilot, Flying J, One9 through Pilot network", "Love's, TA through Fleetsmart", "Permits & documentation"],
+      description: <>Your truck is your business — and we help you keep it running strong. We offer <span className="font-bold text-foreground">24/7 fleet support</span>, our own full-service shop at <span className="font-bold text-foreground">1526 Nicholas Road, Dayton, OH 45417</span>, and the best combination of <span className="font-bold text-foreground">low prices</span>, <span className="font-bold text-foreground">fast work</span>, and <span className="font-bold text-foreground">real quality</span>.</>
     },
     {
       icon: Users,
       title: "Safety & Compliance Support",
-      description: "Driver safety and legal compliance are our top priorities.",
+      description: "Driver safety and legal compliance are our top priorities. We assist with:",
       features: ["Registrations", "Highway & IFTA tax filings", "Permits & documentation"],
     },
+    {
+      icon: ArrowsUpFromLine,
+      title: "Dispatch team",
+      description: <>Top-notch big team with <span className="font-bold text-foreground">100+ employees</span> taking a special care about <span className="font-bold text-foreground">driver gross</span></>
+    },
+    {
+      icon: ShieldCheck,
+      title: "ELD Support",
+      description: <>Our team is dedicated to drivers, providing <span className="font-bold text-foreground">24/7 support</span> and using our own <span className="font-bold text-foreground">ELD system</span> to keep operations smooth and help drivers maximize their <span className="font-bold text-foreground">earnings</span> safely and efficiently.</>
+    }
   ];
 
   const positions = [
@@ -225,7 +237,7 @@ ${formData.get('message') || 'No additional information provided'}
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Join Our Team</h1>
             <p className="text-xl text-muted-foreground">
-              At Royce Logistics, we treat our drivers like partners — because you are the heart of everything we do.
+              At Royce LLC, we treat our drivers like partners — because you are the heart of everything we do.
             </p>
           </motion.div>
         </div>
@@ -271,12 +283,16 @@ ${formData.get('message') || 'No additional information provided'}
                       <h3 className="text-2xl font-semibold mb-3">{benefit.title}</h3>
                       <p className="text-muted-foreground mb-4">{benefit.description}</p>
                       <ul className="space-y-2">
-                        {benefit.features.map((feature, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm">
-                            <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
+                        {benefit.features && benefit.features.length > 0 && (
+                        <ul className="space-y-2">
+                          {benefit.features.map((feature, i) => (
+                            <li key={i} className="flex items-start gap-2 text-sm">
+                              <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                       </ul>
                     </CardContent>
                   </Card>

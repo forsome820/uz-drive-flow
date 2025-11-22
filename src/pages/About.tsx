@@ -96,10 +96,10 @@ const About = () => {
                 WebkitTextFillColor: "transparent"
               }}
             >
-              About Royce Logistics
+              About Royce LLC
             </motion.h1>
             <p className="text-xl text-muted-foreground">
-              Building bridges between businesses through reliable transportation and logistics services since 2008
+              Building bridges between businesses through reliable transportation and logistics services since 2020
             </p>
           </motion.div>
         </div>
@@ -112,7 +112,7 @@ const About = () => {
             <div>
               <img
                 src={warehouse}
-                alt="Royce Logistics warehouse facility"
+                alt="Royce LLC warehouse facility"
                 className="rounded-lg shadow-large"
               />
             </div>
@@ -142,20 +142,16 @@ const About = () => {
               </motion.h2>
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p>
-                  Founded in 2008, Royce Logistics began with a simple mission: to provide
-                  reliable trucking services that businesses could depend on. From our humble beginnings
-                  with just 5 trucks, we've grown into one of America's most trusted logistics partners.
+                  Founded in 2020 in Ohio, our company has grown rapidly thanks to a simple principle: taking care of our drivers and staff. With exceptional people behind every operation, we’ve built strong partnerships with major carriers, delivering reliable, top-notch service.
                 </p>
                 <p>
-                  Today, we operate a modern fleet of over 50 vehicles, serving hundreds of clients across
-                  the United States. Our success is built on the foundation of
-                  reliability, professionalism, and an unwavering commitment to customer satisfaction.
+                  From the start, we’ve welcomed and respected a diverse group of drivers, creating a culture of trust and professionalism. This approach allowed us to expand our fleet to over 500 trucks and grow our team quickly, without ever losing the personal touch that makes every driver feel valued.
                 </p>
                 <p>
-                  We've invested heavily in modern technology, tracking systems, and training programs to
-                  ensure that every shipment is handled with the utmost care and efficiency. Our team of
-                  experienced drivers and logistics specialists work around the clock to keep your business
-                  moving forward.
+                  To stay ahead in a competitive industry, we’ve invested in modern technology, advanced tracking systems, and comprehensive training programs, ensuring that every driver has the tools and knowledge to perform at their best.
+                </p>
+                <p>
+                  Our story is simple: care for our people, excellence in our work, and growth built on trust, respect, and innovation.
                 </p>
               </div>
             </motion.div>
@@ -252,7 +248,7 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold mb-6">Why Choose Royce Logistics?</h2>
+            <h2 className="text-4xl font-bold mb-6">Why Choose Royce LLC?</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -333,7 +329,7 @@ const About = () => {
               >
                 24/7
               </motion.div>
-              <h3 className="text-xl font-semibold mb-2">Customer Support</h3>
+              <h3 className="text-xl font-semibold mb-2">Driver Support</h3>
               <p className="text-muted-foreground">
                 Round-the-clock support for all your logistics needs
               </p>
