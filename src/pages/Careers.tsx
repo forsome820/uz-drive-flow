@@ -441,8 +441,9 @@ ${formData.get('message') || 'No additional information provided'}
       </section>
 
       {/* What We Look For Section */}
+      {/* What We Look For */}
       <section className="py-20">
-        <div className="container mx-auto px-4 max-w-4xl">
+        <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -452,59 +453,36 @@ ${formData.get('message') || 'No additional information provided'}
             <h2 className="text-4xl font-bold mb-4">What We Look For</h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-2xl font-semibold mb-4">For Drivers</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span>Valid commercial driver's license (CDL)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span>Clean driving record</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span>Professional attitude and reliability</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span>Experience with long-distance hauling (preferred)</span>
-                </li>
-              </ul>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-2xl font-semibold mb-4">For Office & Management</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span>Strong organizational and communication skills</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span>Experience in logistics or supply chain (preferred)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span>Problem-solving mindset</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span>Strong communication skills</span>
-                </li>
-              </ul>
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-lg mx-auto"
+          >
+            <Card className="hover:shadow-large transition-smooth">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-semibold mb-6 text-center">For Drivers</h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <span>Valid commercial driver's license (CDL)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <span>Clean driving record</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <span>Professional attitude and reliability</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <span>Experience with long-distance hauling (preferred)</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </section>
     </div>
